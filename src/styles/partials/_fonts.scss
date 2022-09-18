@@ -1,0 +1,76 @@
+@use "./breakpoints";
+
+@font-face {
+    font-family: "kumbh";
+    src: url("../assets/fonts/KumbhSans-ExtraLight.woff") format("woff"),
+      url("../assets/fonts/KumbhSans-ExtraLight.woff2") format("woff2");
+    font-weight: 300;
+  }
+
+  @font-face {
+    font-family: "kumbh";
+    src: url("../assets/fonts/KumbhSans-Regular.woff") format("woff"),
+      url("../assets/fonts/KumbhSans-Regular.woff2") format("woff2");
+    font-weight: 400;
+  }
+
+@font-face {
+  font-family: "kumbh";
+  src: url("../assets/fonts/KumbhSans-SemiBold.woff") format("woff"),
+    url("../assets/fonts/KumbhSans-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+
+  @include breakpoints.tablet {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+}
+
+h2 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+
+  @include breakpoints.tablet {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+h3 {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+
+  @include breakpoints.tablet {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+
+h4 {
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  font-weight: 600;
+
+  @include breakpoints.tablet {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+  }
+}
+
+p {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+  
+    @include breakpoints.tablet {
+      font-size: 0.875rem;
+      line-height: 1.375rem;
+    }
+  }
