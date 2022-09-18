@@ -1,3 +1,98 @@
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/fonts" as *;
 @use "../../styles/partials/mixins" as *;
+
+.header{
+
+    &__container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 1rem;
+
+        @include tablet{
+            
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @include small-laptop{
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            margin: 0 auto;
+            max-width: 80rem;
+        }
+    }
+
+    &__links-container{
+        display: none;
+        width: 100%;
+        font-size: 1.6rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-top: 1.5rem;
+
+        @include tablet{
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        @include small-laptop{
+            margin-top: 0;
+            display: contents;
+        }
+
+    }
+
+    &__logo-link{
+        background-color: transparent;
+        color: $color-global-text;
+        font-size: 2rem;
+        font-weight: 300;
+        cursor: pointer;
+        text-transform: uppercase;
+        z-index: 9;
+        &:hover{
+            text-shadow: .8rem .8rem .1rem rgba($color-outline, 0.4);
+        }
+
+        @include tablet{
+            font-size: 3rem;
+        }
+
+        @include small-laptop{
+            margin-right: 16rem;
+        }
+    }
+
+    &__link{
+        color: $color-global-text;
+        margin: 1rem;
+        cursor: pointer;
+        &:hover{
+            color: $color-interactive-elements;
+            border: 6px solid rgba($color-outline, 0.3);
+            box-shadow: 0 .5rem .3125rem rgba($color-outline, 0.8);
+            border-radius: .25rem;
+            padding: .5rem;
+        }
+        
+        @include tablet{
+            &:nth-child(2){
+                margin-left: 4.8rem;
+            }
+        }
+        @include small-laptop{
+
+            &:nth-child(2){
+                margin-left: 0rem;
+            }
+        }
+    }
+
+    &__link--active{
+        color: blue ;
+    }
+}

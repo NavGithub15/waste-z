@@ -1,20 +1,29 @@
-import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 import "./Header.scss";
+import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
+import { Link, NavLink} from "react-router-dom";
+import { useState } from "react";
 
 export default function Header() {
-  return (
+
+  const [active, setActive] = useState(false)
+
+  function handleActive() {
+    setActive(!active);
+  }
+
+
+  return(
+
     <header className="header">
       <HamburgerMenu />
         <div className="header__container">
-            <img className="header__logo-link" src="" alt="" />
-            <div className="header__links">
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </div>
-
+            <Link to="/" className="header__logo-link">Waste <strong>Z</strong></Link>
+              <nav className="header__links-container">
+                  <NavLink to="/" onClick={handleActive} className={active ? "header__link--active" : "header__link"}>Home</NavLink>
+                  <NavLink to="/inventory" className={active ? "header__link--active" : "header__link"}>Inventory</NavLink>
+                  <NavLink to="/getStarted" className={active ? "header__link--active" : "header__link"}>Get Started</NavLink>
+              </nav>
         </div>
     </header>
   )
-}
+};

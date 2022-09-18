@@ -1,4 +1,5 @@
 import "./HamburgerMenu.scss"
+import { NavLink } from "react-router-dom";
 
 export default function HamburgerMenu() {
   return (
@@ -8,7 +9,7 @@ export default function HamburgerMenu() {
         <span></span>
         <span></span>
         <span></span>
-        <ul id="menu">
+        <ul className="menu" id="menu">
           <div className="icon-container">
             <div className="icon"></div>
           </div>

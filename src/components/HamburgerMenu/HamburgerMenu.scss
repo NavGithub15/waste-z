@@ -36,7 +36,7 @@
     margin-left: 1rem;
     margin-top: 2rem;
     position: relative;
-    background: #000000;
+    background: $color-hamburger-stripes;
     border-radius: 3px;
     z-index: 1;
     transform-origin: 5px 0px;
@@ -59,7 +59,7 @@
   {
     opacity: 1;
     transform: rotate(45deg) translate(-3px, -1px);
-    background:  #000000;
+    background:  $color-hamburger-stripes;
   }
   
   #menuToggle input:checked ~ span:nth-last-child(3)
@@ -78,11 +78,11 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    box-shadow: 0 0 10px #85888C;
+    // box-shadow: 0 0 10px #85888C;
     // margin: 50px 0 0 50px;
     padding: 50px;
     padding-top: 125px;
-    background-color: rgb(6, 107, 85);
+    background-color: $color-hamburger-background;
     -webkit-font-smoothing: antialiased;
     transform-origin: 0% 0%;
     transform: translate(-100%, 0);
