@@ -2,22 +2,24 @@
 @use "../../styles/partials/fonts" as *;
 @use "../../styles/partials/mixins" as *;
 
+.menu {
 
-#menuToggle {
+  &__toggle {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
     z-index: 1;
+    margin-bottom: -0.6rem;
     -webkit-user-select: none;
     user-select: none;
 
-    @include tablet{
-        display: none;
+    @include tablet {
+      display: none;
     }
   }
-  
-  #menuToggle input {
+
+  &__input {
     display: flex;
     width: 40px;
     height: 32px;
@@ -26,77 +28,85 @@
     opacity: 0;
     z-index: 2;
   }
-  
-  #menuToggle span
-  {
+
+  &__burger {
     display: flex;
     width: 30px;
     height: 3px;
     margin-bottom: -1.75rem;
-    margin-left: 1rem;
+    margin-left: 1.5rem;
     margin-top: 2rem;
     position: relative;
     background: $color-hamburger-stripes;
     border-radius: 3px;
     z-index: 1;
     transform-origin: 5px 0px;
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                opacity 0.55s ease;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
   }
-  
-  #menuToggle span:first-child
-  {
+
+  &__burger:first-child {
     transform-origin: 0% 0%;
   }
-  
-  #menuToggle span:nth-last-child(2)
-  {
+
+  &__burger:nth-last-child(2) {
     transform-origin: 0% 100%;
   }
-  
-  #menuToggle input:checked ~ span
-  {
+
+  &__input:checked ~ span {
     opacity: 1;
     transform: rotate(45deg) translate(-3px, -1px);
-    background:  $color-hamburger-stripes;
+    background: $color-hamburger-stripes;
   }
-  
-  #menuToggle input:checked ~ span:nth-last-child(3)
-  {
+
+  &__input:checked ~ span:nth-last-child(3) {
     opacity: 0;
     transform: rotate(0deg) scale(0.2, 0.2);
   }
-  
-  #menuToggle input:checked ~ span:nth-last-child(2)
-  {
+
+  &__input:checked ~ span:nth-last-child(2) {
     transform: rotate(-45deg) translate(0, -1px);
   }
-  
-  #menu
-  {
+
+  &__lists {
     position: absolute;
     width: 100%;
     height: 100%;
-    // box-shadow: 0 0 10px #85888C;
-    // margin: 50px 0 0 50px;
-    padding: 50px;
+    padding: 1rem;
     padding-top: 125px;
     background-color: $color-hamburger-background;
     -webkit-font-smoothing: antialiased;
     transform-origin: 0% 0%;
     transform: translate(-100%, 0);
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
   }
-  
-  #menu li
-  {
+
+  &__lists li {
     padding: 10px 0;
     transition-delay: 2s;
-    font-size: .80rem;
+    font-size: 0.8rem;
   }
-  
-  #menuToggle input:checked ~ ul
-  {
+
+  &__input:checked ~ ul {
     transform: none;
   }
+
+  &__links-container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__link{
+    font-size: 1.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $color-primary-background;
+    margin: 1.5rem 0.5rem;
+    cursor: pointer;
+    &:hover{
+      color: $color-hamburger-stripes;
+    }
+  }
+
+
+}
