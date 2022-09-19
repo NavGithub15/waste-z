@@ -1,0 +1,73 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+
+.hero-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    margin-top: 0.5rem;
+    height: 50vw;
+    width: 100%;
+    background: linear-gradient(to top, rgba(24, 29, 30, 0.1), rgba(60, 141, 61, 0.30)),
+    url(../../styles/assets/images/pexels-thought-catalog-2228553.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+   
+    @include tablet{
+        max-height: 40rem;
+    }
+
+
+    @include desktop{
+        max-width: 80rem;
+        margin: 0 auto;
+    }
+}
+
+.hero{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    color: $color-primary-background;
+
+    @include tablet{
+    border: 5px solid $color-global-text;
+    padding: 2rem;
+    }
+
+    &__title{
+        font-size: 1.875rem;
+        font-weight: 300;
+        text-transform: uppercase;
+
+        @include tablet{
+            margin-bottom: 1rem;
+            font-size: 3rem;
+        }
+    }
+
+    &__subtitle{
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: center;
+
+        @include tablet{
+            font-size: 1.5rem;
+        }
+    }
+
+    &__text{
+        font-size: .9rem;
+        font-weight: 600;
+        margin-top: .5rem;
+
+        @include tablet{
+            font-size: 1.2rem;
+        }
+    }
+}
