@@ -4,6 +4,7 @@
 
 .article{
     padding: 1rem;
+    background-color: $color-secondary-background;
 
     @include tablet{
         padding: 2rem;
@@ -36,6 +37,7 @@
         align-items: center;
         flex: 0 0 auto;
         margin: 1rem;
+        transition: cubic-bezier(0.075, 0.82, 0.165, 1);
 
         @include tablet{
         }
