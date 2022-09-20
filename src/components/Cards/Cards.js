@@ -1,0 +1,40 @@
+import "./Cards.scss";
+import blueberry from "../../styles/assets/images/Blueberry.jpeg";
+import broccoli from "../../styles/assets/images/broccoli.jpeg";
+import dishImage from "../../styles/assets/images/dish.jpeg";
+import strawberry from "../../styles/assets/images/strawberry.jpeg";
+
+export default function Cards() {
+  return (
+
+    <article className="article">
+        <h2 className="article__heading">Explore</h2>
+        <div className="article__container">
+            <div className="article__card">
+                <img className="article__card-image" src={blueberry} alt="spoiled apple" loading="lazy"/>
+                <div className="article__text-wrapper">
+                    <h3 className="article__text">Storage</h3>
+                </div>
+            </div>
+            <div className="article__card">
+                <img className="article__card-image" src={strawberry} alt="strawberry" loading="lazy"/>
+                <div className="article__text-wrapper">
+                    <h3 className="article__text">Track</h3>
+                </div>
+            </div>
+            <div className="article__card">
+                <img className="article__card-image" src={dishImage} alt="dish prep" loading="lazy" />
+                <div className="article__text-wrapper">
+                    <h3 className="article__text">Browse Recipes</h3>
+                </div>   
+            </div>
+            <div className="article__card">
+                <img className="article__card-image" src={broccoli} alt="broccoli" loading="lazy"/>
+                <div className="article__text-wrapper">
+                    <h3 className="article__text">Donate</h3>
+                </div>
+            </div>
+        </div>
+    </article>
+  );
+}

@@ -1,0 +1,81 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+
+.article{
+    padding: 1rem;
+
+    @include tablet{
+        padding: 2rem;
+        max-width: 80rem;
+        margin: 0 auto;
+    }
+
+    &__heading{
+        padding-left: .6rem;
+        text-transform: uppercase;
+
+        @include tablet{
+            padding-bottom: .6rem;
+            font-size: 2rem;
+        }
+    }
+
+
+    &__container{
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        overflow-x: auto;
+    }
+
+    &__card{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 0 0 auto;
+        margin: 1rem;
+
+        @include tablet{
+        }
+
+    }
+
+    &__card-image{
+        width: 250px;
+        height: 300px;
+        object-fit: cover;
+        object-position: 0 80%;
+        border-radius: 4px;
+        cursor: pointer;
+        overflow: hidden;
+        box-shadow: .3rem .5rem .3125rem rgba($color-interactive-elements, 0.3);
+        &:nth-child(1){
+            object-position: 30% 100%;
+        }
+    }
+
+    &__text-wrapper{
+        position: absolute;
+        bottom: 1rem;
+        color: $color-global-text;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        border: 2px solid $color-interactive-elements;
+        border-radius: 6px;
+        &:hover{
+            background-color: $color-cta-background;
+            color: $color-primary-background;
+        }
+    }
+
+    &__text{
+        font-size: 1rem;
+        text-transform: uppercase;
+        text-align: center;
+        cursor: pointer;
+    }
+}
