@@ -21,7 +21,7 @@ export default function Header() {
               <nav className="header__links-container">
                   <NavLink to="/" onClick={handleActive} className={active ? "header__link--active" : "header__link"}>Home</NavLink>
                   <NavLink to="/inventory" className={active ? "header__link--active" : "header__link"}>Inventory</NavLink>
-                  <NavLink to="/authentication" className={active ? "header__link--active" : "header__link"}>Get Started</NavLink>
+                  <NavLink to="/signUp" className={active ? "header__link--active" : "header__link"}>Get Started</NavLink>
               </nav>
         </div>
     </header>

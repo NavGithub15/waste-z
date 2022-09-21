@@ -12,7 +12,7 @@ export default function HamburgerMenu() {
         <ul className="menu__lists">
           <div className="menu__links-container">
             <NavLink className="menu__link" to="/inventory">Inventory</NavLink>
-            <NavLink className="menu__link" to="/authentication">Get Started</NavLink>
+            <NavLink className="menu__link" to="/signUp">Get Started</NavLink>
             <NavLink className="menu__link" to="/donate">Donate</NavLink>
           </div>
         </ul>
