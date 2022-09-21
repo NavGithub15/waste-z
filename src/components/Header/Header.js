@@ -20,7 +20,7 @@ export default function Header() {
             <Link to="/" className="header__logo-link">Waste <strong>Z</strong></Link>
               <nav className="header__links-container">
                   <NavLink to="/" onClick={handleActive} className={active ? "header__link--active" : "header__link"}>Home</NavLink>
-                  <NavLink to="/inventory" className={active ? "header__link--active" : "header__link"}>Inventory</NavLink>
+                  <NavLink to="/signIn" className={active ? "header__link--active" : "header__link"}>Inventory</NavLink>
                   <NavLink to="/signUp" className={active ? "header__link--active" : "header__link"}>Get Started</NavLink>
               </nav>
         </div>

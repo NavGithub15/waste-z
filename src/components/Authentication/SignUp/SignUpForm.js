@@ -27,47 +27,53 @@ function SignUpForm() {
   };
 
   return (
-    <div className="">
-      <div>
-        <h2 className="">Sign up for a free account</h2>
-        <span className="">
-          Already have an account yet ?{" "}
-          <Link to="/signIn" className="">
-            Sign in.
-          </Link>
-        </span>
+    <div className="auth">
+      <div className="auth-container">
+        <h2 className="auth__title">Sign up</h2>
       </div>
-      <form onSubmit={handleSubmit}>
-        <div className="">
-          <label className="">Email Address</label>
+
+      {error && <label className="error">{errorMessage}</label>}
+
+    <form onSubmit={handleSubmit}>
+      <div className="form__container">
+        <div className="form__input-wrapper">
+          <label className="form__input-label">Email Address</label>
           <input
             onChange={(e) => setEmail(e.target.value)}
             className=""
-            type="email"
-          />
+            type="email"/>
         </div>
-        <div className="">
-          <label className="">Password</label>
+        <div className="form__input-wrapper">
+          <label className="form__input-label">Password</label>
           <input
             onChange={(e) => setPassword(e.target.value)}
             className=""
-            type="password"
-          />
+            type="password"/>
         </div>
-        {error && <label className="error">{errorMessage}</label>}
         <div className="">
-          <label className="">Confirm Password</label>
+          <label className="form__input-label">Confirm Password</label>
           <input
             onChange={(e) => setConfirmPassword(e.target.value)}
             className=""
-            type="password"
-          />
+            type="password"/>
         </div>
-        <button className="">
-          Sign Up
-        </button>
-      </form>
-    </div>
+        <div className="form__cta-wrapper">
+          <button className="form__cta">
+            Sign Up
+          </button>
+          <Link className="form__cta-cancel">
+          Cancel
+          </Link>
+        </div>
+      </div>
+    </form>
+    <p className="__text">
+          Already have an account yet ?{" "}
+          <Link to="/signIn" className="auth__text-link">
+            Sign in.
+          </Link>
+        </p>
+  </div>
   );
 };
 
