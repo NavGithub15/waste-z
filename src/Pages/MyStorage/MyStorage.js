@@ -1,9 +1,25 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../Contexts/AuthContexts';
+import { useState } from 'react';
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../firebase.config";
 
 export default function MyStorage() {
-  const { currentUser, logOut } = useAuth();
+
+  let dateNow = new Date().toLocaleString("en-US", {
+    month: "2-digit",
+    day: "2-digit",
+    year: "numeric",
+  });
+
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
+  const [currentDate, setCurrentDate] = useState(dateNow);
+  const [futureDate, setFutureDate] = useState(dateNow);
+  const [errorMessage, setErrorMessage] = useState("")
+
+  const { currentUser, logOut, } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -12,18 +28,69 @@ export default function MyStorage() {
       navigate('/');
       console.log('You are logged out')
     } catch (e) {
-      console.log(e.message);
+      console.log(e.error);
     }
   };
 
-  return (
-    <div className="">
-      <h2 className="">Account</h2>
-      <p>User Email: {currentUser && currentUser.email}</p>
+  const handleAddSubmit = async(e) => {
+    e.preventDefault();
 
-      <button onClick={handleLogout} className="">
-        Logout
-      </button>
-    </div>
+    const data = await addDoc(collection(db, "MyStorage"), { 
+      name: name,
+      category: category,
+      futureDate: futureDate,
+      currentDate: currentDate,
+    }) 
+    if(name === "" || category === "" || currentDate === "" || futureDate === "") {
+      setErrorMessage("All fields are necessary")
+      return;
+    }
+  }
+
+  return (
+    <section className="storage">
+      <div className="storage__account-container">
+        <h2 className="storage__title">My Storage</h2>
+        <div className="storage__user-wrapper">
+          <p className="storage__user">{currentUser && currentUser.email}</p>
+          <span onClick={handleLogout} className="storage__user-cta">
+          Log Out
+          </span>
+        </div>
+      </div>
+
+      <div>
+        {errorMessage && <p>{errorMessage}</p>}
+        <form onSubmit={handleAddSubmit}>
+          <div>
+            <input type="image" />
+          </div>
+          <div>
+            <label>Item Name</label>
+            <input type="text" name="name" onChange={(e) => setName(e.target.value)}/>
+          </div>
+          <div>
+            <label>Storing Location</label>
+            <select name="category" onChange={(e) => setCategory(e.target.value)}>
+            <option defaultValue> -- select an option -- </option>
+            <option value="fridge">Fridge</option>
+            <option value="pantry">Pantry</option>
+            <option value="freezer">Freezer</option>
+            </select>
+          </div>
+          <div>
+            <label>Purchased Date</label>
+            <input type="date" onChange={(e) => setCurrentDate(e.target.value)}/>
+            <label>Expiry Date</label>
+            <input type="date" onChange={(e) => setFutureDate(e.target.value)}/>
+          </div>
+          <div>
+            <button type="submit">Add</button>
+          </div>
+        </form>
+
+      </div>
+
+    </section>
   );
 };

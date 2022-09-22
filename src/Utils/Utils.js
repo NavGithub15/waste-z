@@ -14,8 +14,7 @@ import { collection, getDocs } from "firebase/firestore";
     return getDocs(vegetablesDb) 
     .then((data) => {
       return (data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));  
-  })
-}
+  })}
 
   export const dairy = () => {
     return getDocs(dairyDb)  

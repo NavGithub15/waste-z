@@ -6,7 +6,7 @@ function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const { signUp } = useAuth();
@@ -23,6 +23,7 @@ function SignUpForm() {
       navigate("/signIn");
     } catch {
       setError("Failed to create an account! Please try again");
+      setErrorMessage("Failed to sign up! Please try again")
     }
   };
 
@@ -43,6 +44,9 @@ function SignUpForm() {
             className=""
             type="email"/>
         </div>
+
+        {error && <label className="error">{errorMessage}</label>}
+
         <div className="form__input-wrapper">
           <label className="form__input-label">Password</label>
           <input
