@@ -4,6 +4,7 @@ import { useAuth } from '../../Contexts/AuthContexts';
 import { useState } from 'react';
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../firebase.config";
+import QuantityPicker from '../../components/QuantityPicker/QuantityPicker';
 
 export default function MyStorage() {
 
@@ -17,6 +18,7 @@ export default function MyStorage() {
   const [category, setCategory] = useState("");
   const [currentDate, setCurrentDate] = useState(dateNow);
   const [futureDate, setFutureDate] = useState(dateNow);
+  const [quantity, setQuantity] = useState(0)
   const [errorMessage, setErrorMessage] = useState("")
 
   const { currentUser, logOut, } = useAuth();
@@ -45,6 +47,7 @@ export default function MyStorage() {
       setErrorMessage("All fields are necessary")
       return;
     }
+    e.target.reset();
   }
 
   return (
@@ -69,6 +72,7 @@ export default function MyStorage() {
             <label>Item Name</label>
             <input type="text" name="name" onChange={(e) => setName(e.target.value)}/>
           </div>
+          <QuantityPicker />
           <div>
             <label>Storing Location</label>
             <select name="category" onChange={(e) => setCategory(e.target.value)}>
