@@ -6,7 +6,7 @@ function SignInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const { logIn }  = useAuth();
 
   const handleSubmit = async (e) => {
@@ -14,7 +14,7 @@ function SignInForm() {
     setError('')
     try {
       await logIn(email, password)
-      // navigate('/inventory')
+      navigate('/myStorage')
     } catch (e) {
       setError("Failed to login! Please try again")
       console.log(e.message)

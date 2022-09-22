@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../Contexts/AuthContexts';
 
-const Inventory = () => {
+export default function MyStorage() {
   const { currentUser, logOut } = useAuth();
   const navigate = useNavigate();
 
@@ -27,4 +27,3 @@ const Inventory = () => {
     </div>
   );
 };
-export default Inventory;

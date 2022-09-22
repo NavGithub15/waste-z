@@ -20,7 +20,7 @@ export default function Cards() {
             <div className="article__card">
                 <img className="article__card-image" src={strawberry} alt="strawberry" loading="lazy"/>
                 <div className="article__text-wrapper">
-                    <Link to="/authentication"><h3 className="article__text">Track</h3></Link>   
+                    <Link to="/myStorage"><h3 className="article__text">Track</h3></Link> 
                 </div>
             </div>
             <div className="article__card">
