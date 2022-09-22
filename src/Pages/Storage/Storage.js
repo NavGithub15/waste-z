@@ -27,14 +27,17 @@ export default function Storage() {
 
   return (
    
-    <div>
+    <section>
       <div>
         {dairyItems.map((item) => {
           return (
             <div key={item.id}>
               {" "}
-              <h1>{item.name}</h1>
-              <h2>{item.fresh}</h2>
+              <p>{item.name}</p>
+              <p>{item.fresh}</p>
+              <p>{item.fridge}</p>
+              <p>{item.freezer}</p>
+              <p>{item.storage}</p>
             </div>
           );
         })}
@@ -45,8 +48,11 @@ export default function Storage() {
           return (
             <div key={item.id}>
               {" "}
-              <h1>{item.name}</h1>
-              <h2>{item.fresh}</h2>
+              <p>{item.name}</p>
+              <p>{item.fresh}</p>
+              <p>{item.fridge}</p>
+              <p>{item.freezer}</p>
+              <p>{item.storage}</p>
             </div>
           );
         })}
@@ -57,8 +63,11 @@ export default function Storage() {
           return (
             <div key={item.id}>
               {" "}
-              <h1>{item.name}</h1>
-              <h2>{item.fresh}</h2>
+              <p>{item.name}</p>
+              <p>{item.fresh}</p>
+              <p>{item.fridge}</p>
+              <p>{item.freezer}</p>
+              <p>{item.storage}</p>
             </div>
           );
         })}
@@ -69,8 +78,11 @@ export default function Storage() {
           return (
             <div key={item.id}>
               {" "}
-              <h1>{item.name}</h1>
-              <h2>{item.fresh}</h2>
+              <p>{item.name}</p>
+              <p>{item.fresh}</p>
+              <p>{item.fridge}</p>
+              <p>{item.freezer}</p>
+              <p>{item.storage}</p>
             </div>
           );
         })}
@@ -81,8 +93,11 @@ export default function Storage() {
           return (
             <div key={item.id}>
               {" "}
-              <h1>{item.name}</h1>
-              <h2>{item.fresh}</h2>
+              <p>{item.name}</p>
+              <p>{item.fresh}</p>
+              <p>{item.fridge}</p>
+              <p>{item.freezer}</p>
+              <p>{item.storage}</p>
             </div>
           );
         })}
@@ -93,8 +108,11 @@ export default function Storage() {
           return (
             <div key={item.id}>
               {" "}
-              <h1>{item.name}</h1>
-              <h2>{item.fresh}</h2>
+              <p>{item.name}</p>
+              <p>{item.fresh}</p>
+              <p>{item.fridge}</p>
+              <p>{item.freezer}</p>
+              <p>{item.storage}</p>
             </div>
           );
         })}
@@ -105,12 +123,15 @@ export default function Storage() {
           return (
             <div key={item.id}>
               {" "}
-              <h1>{item.name}</h1>
-              <h2>{item.fresh}</h2>
+              <p>{item.name}</p>
+              <p>{item.fresh}</p>
+              <p>{item.fridge}</p>
+              <p>{item.freezer}</p>
+              <p>{item.storage}</p>
             </div>
           );
         })}
       </div>
-    </div>
+    </section>
   );
 }
