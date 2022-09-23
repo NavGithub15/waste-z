@@ -2,22 +2,18 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../Contexts/AuthContexts';
 import { useState } from 'react';
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, Timestamp, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase.config";
 import QuantityPicker from '../../components/QuantityPicker/QuantityPicker';
 
 export default function MyStorage() {
 
-  let dateNow = new Date().toLocaleString("en-US", {
-    month: "2-digit",
-    day: "2-digit",
-    year: "numeric",
-  });
+  let date = new Date(Date.now());
 
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
-  const [currentDate, setCurrentDate] = useState(dateNow);
-  const [futureDate, setFutureDate] = useState(dateNow);
+  const [currentDate, setCurrentDate] = useState(date);
+  const [futureDate, setFutureDate] = useState(date);
   const [quantity, setQuantity] = useState(0)
   const [errorMessage, setErrorMessage] = useState("")
 
@@ -37,17 +33,40 @@ export default function MyStorage() {
   const handleAddSubmit = async(e) => {
     e.preventDefault();
 
-    const data = await addDoc(collection(db, "MyStorage"), { 
-      name: name,
-      category: category,
-      futureDate: futureDate,
-      currentDate: currentDate,
-    }) 
-    if(name === "" || category === "" || currentDate === "" || futureDate === "") {
+    if(!name || !category || !currentDate || !futureDate || !quantity ) {
       setErrorMessage("All fields are necessary")
       return;
+    } else {
+      try { await addDoc(collection(db, "MyStorage"), { 
+        name: name,
+        category: category,
+        futureDate: futureDate,
+        currentDate: currentDate,
+        timestamp: serverTimestamp(),
+        quantity: quantity
+      }) 
+    } catch {
+      console.log()
+    }
     }
     e.target.reset();
+    setQuantity(0);
+  }
+
+  const increment = () => {
+    setQuantity(function (prevCount) {
+      return (prevCount += 1);
+    });
+  }
+
+  const decrement = () => {
+    setQuantity(function (prevCount) {
+      if (prevCount > 0) {
+        return (prevCount -= 1); 
+      } else {
+        return (prevCount = 0);
+      }
+    });
   }
 
   return (
@@ -72,7 +91,7 @@ export default function MyStorage() {
             <label>Item Name</label>
             <input type="text" name="name" onChange={(e) => setName(e.target.value)}/>
           </div>
-          <QuantityPicker />
+          <QuantityPicker increment={increment} decrement={decrement} quantity={quantity}/>
           <div>
             <label>Storing Location</label>
             <select name="category" onChange={(e) => setCategory(e.target.value)}>
@@ -92,7 +111,6 @@ export default function MyStorage() {
             <button type="submit">Add</button>
           </div>
         </form>
-
       </div>
 
     </section>
