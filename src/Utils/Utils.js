@@ -8,6 +8,7 @@ import { collection, getDocs } from "firebase/firestore";
   const condimentsDb = collection(db, "OILS, CONDIMENTS & SPICES");
   const pantryDb = collection(db, "PANTRY STAPLES");
   const veganProteinsDb = collection(db, "beans, nuts & proteins");
+  const myStorageDb = collection(db, "MyStorage");
 
 
   export const vegetables =  () => { 
@@ -51,3 +52,10 @@ import { collection, getDocs } from "firebase/firestore";
     .then((data) => {
       return (data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   })}
+
+  export const myStorage = () => {
+    return getDocs(myStorageDb)  
+    .then((data) => {
+      return (data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  })}
+
