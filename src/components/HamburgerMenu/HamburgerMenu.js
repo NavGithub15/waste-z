@@ -1,7 +1,12 @@
 import "./HamburgerMenu.scss";
 import { NavLink } from "react-router-dom";
+import { auth } from "../../firebase.config";
+import { useAuthState } from "react-firebase-hooks/auth"
 
 export default function HamburgerMenu() {
+
+  const [currentUser] = useAuthState (auth)
+
   return (
     <div className="menu">
       <div className="menu__toggle">
@@ -11,7 +16,10 @@ export default function HamburgerMenu() {
         <span className="menu__burger"></span>
         <ul className="menu__lists">
           <div className="menu__links-container">
-            <NavLink className="menu__link" to="/signIn">Inventory</NavLink>
+          <NavLink to="/" className="menu__link">Home</NavLink>
+          {!currentUser ? (<NavLink to="/signIn" className="menu__link">My Storage</NavLink>) : 
+                  (<NavLink to="/myStorage" className="menu__link">My Storage</NavLink>
+                  )}
             <NavLink className="menu__link" to="/signUp">Get Started</NavLink>
             <NavLink className="menu__link" to="/donate">Donate</NavLink>
           </div>

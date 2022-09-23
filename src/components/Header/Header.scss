@@ -73,9 +73,6 @@
         cursor: pointer;
         &:hover{
             color: $color-interactive-elements;
-            border: 6px solid rgba($color-outline, 0.3);
-            box-shadow: 0 .5rem .3125rem rgba($color-outline, 0.8);
-            border-radius: .25rem;
             padding: .5rem;
         }
         
@@ -92,7 +89,8 @@
         }
     }
 
-    // &__link--active{
-    //     color: blue ;
-    // }
+    .active {
+        padding-bottom: .5rem;
+        border-bottom: 6px solid rgba($color-outline, 0.4);
+    }
 }
