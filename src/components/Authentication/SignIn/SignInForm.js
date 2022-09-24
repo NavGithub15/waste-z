@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../Contexts/AuthContexts';
-import "./SignIn.scss";
+import "./SignInForm.scss";
 
-function SignInForm() {
+export default function SignInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
   const navigate = useNavigate();
   const { logIn }  = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('')
+
+    if (email==="" || password ==="") {
+      return setErrorMessage("Fields are empty");
+    };
     try {
       await logIn(email, password)
       navigate('/myStorage')
     } catch (e) {
-      setError("Failed to login! Please try again")
-      console.log(e.message)
+      setError(true)
     }
   };
 
+  {errorMessage && <span>Fields are empty!!</span>}
   return (
     <div className="auth">
       <div className="auth__container">
@@ -39,13 +43,16 @@ function SignInForm() {
             Sign up.
           </Link>
         </p>
+        <div className='auth__cta-wrapper'>
+        <Link to="/" className="auth__cta">
+          Cancel
+        </Link>
         <button className="auth__cta">
           Sign In
         </button>
+        </div>
       </form>
       </div>
     </div>
   );
 };
-
-export default SignInForm;
