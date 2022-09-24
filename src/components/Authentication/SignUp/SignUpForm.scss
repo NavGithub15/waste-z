@@ -79,19 +79,19 @@
         color: $color-global-text;
         border: none;
         border-radius: 6px;
+        cursor: pointer;
+        &:hover{
+            background-color: $color-interactive-elements;
+            color: $color-primary-background;
+        }
         &:last-child{
             width: 100%;
             background-color: $color-primary-background;
             font-size: .8rem;
             &:hover{
                 background-color: $color-secondary-background;
-                color: $color-cta-background;
+                color: $color-secondary-cta;
             }
-        }
-        &:hover{
-            background-color: $color-interactive-elements;
-            color: $color-primary-background;
-            cursor: pointer;
         }
     }
 }
