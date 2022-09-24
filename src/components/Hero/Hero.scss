@@ -8,6 +8,7 @@
     justify-content: center;
     align-items: center;
     align-items: center;
+    position: relative;
     margin-top: 0.5rem;
     height: 50vw;
     width: 100%;
@@ -28,12 +29,21 @@
     }
 }
 
+.hero__layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: black, $alpha: 0.25);
+}
+
 .hero{
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1rem;
     color: $color-primary-background;
+    position: relative;
+    z-index: 1;
 
     @include tablet{
     border: 5px solid $color-global-text;

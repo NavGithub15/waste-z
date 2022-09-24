@@ -1,4 +1,5 @@
 @use "./mixins" as *;
+@use "./colors" as *;
 
 @font-face {
     font-family: "kumbh";
@@ -75,4 +76,9 @@ p {
       font-size: 1rem;
       line-height: 1.375rem;
     }
+  }
+
+  a {
+    text-transform: uppercase;
+    color: $color-interactive-elements;
   }

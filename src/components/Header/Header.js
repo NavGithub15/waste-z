@@ -15,7 +15,7 @@ export default function Header() {
         <div className="header__container">
             <Link to="/" className="header__logo-link">Waste <strong>Z</strong></Link>
               <nav className="header__links-container">
-                  <NavLink to="/" className="header__link">Home</NavLink>
+                  <NavLink to="/" end className="header__link">Home</NavLink>
                   {!currentUser ? (<NavLink to="/signIn" className="header__link">My Storage</NavLink>) : 
                   (<NavLink to="/myStorage" className="header__link">My Storage</NavLink>
                   )}
