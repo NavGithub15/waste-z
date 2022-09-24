@@ -8,7 +8,7 @@ import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { myStorage } from "../../Utils/Utils";
 import { v4 } from "uuid";
 import QuantityPicker from '../../components/QuantityPicker/QuantityPicker';
-import imageIcon from "../../styles/assets/icons/Circle-icons-image.svg.png";
+// import imageIcon from "../../styles/assets/icons/Circle-icons-image.svg.png";
 
 
 export default function MyStorage() {
@@ -133,15 +133,15 @@ export default function MyStorage() {
           Log Out
           </span>
         </div>
+        <h2 className="storage__title">Add new item</h2>
       <div className="storage__container">
-      <h2 className="storage__title">Add new item</h2>
         {errorMessage && <p>Please fill out all the fields!!</p>}
         <form className="storage__form" onSubmit={handleAddSubmit}>
           <div className="storage__icon-wrapper">
             <label htmlFor="file-input" className="storage__input-label">
-            <img className="storage__icon" 
+            {/* <img className="storage__icon" 
               src={imageIcon}
-              alt="upload icon" />
+              alt="upload icon" /> */}
               </label>
               <input type="file"
                 className="storage__input-file" 
@@ -157,7 +157,7 @@ export default function MyStorage() {
           <QuantityPicker className="storage__qty-picker"
             increment={increment} decrement={decrement} quantity={quantity}/>
           <div className="storage__option-wrapper">
-            <h3 className="storage__option-label">Storing Location</h3>
+            <h4 className="storage__option-label">Storing Location</h4>
             <select className="storage__option-select" name="category"
              onChange={(e) => setCategory(e.target.value)}>
               <option className="storage__option" defaultValue> -- Select an option -- </option>
@@ -167,11 +167,13 @@ export default function MyStorage() {
             </select>
           </div>
           <div className="storage__date-wrapper">
-            <h3 className="storage__date-label">Purchased Date</h3>
+            <h4 className="storage__date-label">Purchased Date</h4>
             <input className="storage__date" type="date"
               onChange={(e) => setCurrentDate(e.target.value)}/>
-            <h3 className="storage__date-label">Expiry Date</h3>
-            <input className="storage__date" type="date"
+              </div>
+              <div className="storage__date-wrapper">
+            <h4 className="storage__date-label">Expiry Date</h4>
+              <input className="storage__date" type="date"
              onChange={(e) => setFutureDate(e.target.value)}/>
           </div>
           <div className="storage__cta-wrapper">
