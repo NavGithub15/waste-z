@@ -1,0 +1,86 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+
+.details{
+    margin-top: 2rem;
+
+    &__title-wrapper{
+        margin-bottom: 0.5rem;
+    }
+
+    &__container{
+        padding: 1rem 0;
+        margin: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid rgba($color-divider, 0.3);
+        border-top: 1px solid rgba($color-divider, 0.3);
+    }
+
+    &__img-trackBar-wrapper{
+        display: flex;
+        align-items: center;
+    }
+
+    &__image-wrapper{
+        display: flex;
+        align-items: center;
+        margin-right: 1rem;
+    }
+
+    &__image{
+        width: 6.25rem;
+        height: 100px;
+        border-radius: 4px;
+        object-fit: cover;
+    }
+}
+
+.food{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+
+    &__content-heading{
+        text-transform: uppercase;
+    }
+
+    &__icon-wrapper{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__icon{
+        margin-left: 1rem;
+        width: 1.5rem;
+        cursor: pointer;
+    }
+
+}
+
+
+.dropdown{
+    position: relative;
+}
+
+.dropdown-menu{
+    position: absolute;
+    left: 0;
+    top: calc(100% + .25rem);
+    background-color: white;
+    padding: .75rem;
+    border-radius: .25rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+// .dropdown__container.active > .details__container + .dropdown-menu{
+//     opacity: 1;
+//     transform: translateY(0);
+//     pointer-events: auto; 
+
+// }

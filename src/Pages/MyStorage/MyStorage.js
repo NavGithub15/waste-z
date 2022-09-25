@@ -165,19 +165,19 @@ export default function MyStorage() {
               <option className="storage__option"
                defaultValue> -- Select an option -- </option>
               <option className="storage__option"
-               value="fruits">Fruits</option>
+               value="Fruits">Fruits</option>
               <option className="storage__option"
-               value="vegetables">Vegetables</option>
+               value="Vegetables">Vegetables</option>
               <option className="storage__option"
-               value="protein">Proteins</option>
+               value="Proteins">Proteins</option>
               <option className="storage__option"
-               value="dairy">Dairy & Eggs</option>
+               value="Dairy">Dairy & Eggs</option>
               <option className="storage__option"
-               value="pantry">Pantry Staples</option>
+               value="Pantry">Pantry Staples</option>
               <option className="storage__option"
-               value="spices">Oils, Condiments & Spices</option>
+               value="Spices">Oils, Condiments & Spices</option>
               <option className="storage__option"
-               value="vegan">Vegan Proteins</option>
+               value="Vegan">Vegan Proteins</option>
             </select>
           </div>
           <div className="storage__date-wrapper">

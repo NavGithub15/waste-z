@@ -1,0 +1,25 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+
+.trackBar{
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  width: 100%;
+  border: 1px solid rgba($color-outline, 0.4);
+  border-radius: 50px;
+  background-color: rgba($color-divider, 0.4);
+
+  &__inner{
+    position: absolute;
+    top: 1px;
+    height: 1.2rem;
+    width: 100%;
+    background: $color-primary-background;
+    border-radius: 25px;
+    transition: width 100ms ease-out;
+  }
+}
+  
