@@ -62,7 +62,9 @@
             background-color: $color-interactive-elements;
             color: $color-primary-background;
         }
-
         
+        @include tablet{
+            width: 8rem;
+        }
     }
 }
