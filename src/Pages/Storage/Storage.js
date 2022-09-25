@@ -23,111 +23,214 @@ export default function Storage() {
     veganProteins().then(response => setVeganProteinsItems(response))
   }, []);
 
-  
 
   return (
-   
-    <section>
-      <div>
+
+    <section className="storage__card card">
+      <div className="card__container">
+        <h2 className="card__heading">Dairy & Eggs</h2>
         {dairyItems.map((item) => {
           return (
-            <div key={item.id}>
+            <div key={item.id} className="card__content-wrapper">
               {" "}
-              <p>{item.name}</p>
-              <p>{item.fresh}</p>
-              <p>{item.fridge}</p>
-              <p>{item.freezer}</p>
-              <p>{item.storage}</p>
+              <div className="card__name-wrapper">
+                <h3 className="card__name">{item.name}</h3>
+              </div>
+              <div className="card__fresh-wrapper">
+                <h4 className="card__content-heading">At Freshest</h4>
+                <p className="card__fresh">{item.fresh}</p>
+              </div>
+              <div className="card__fridge-wrapper">
+                <h4 className="card__content-heading">Refrigerator</h4>
+                <p className="card__fridge">{item.fridge}</p>
+              </div>
+              <div className="card__freezer-wrapper">
+                <h4 className="card__content-heading">Freezing</h4>
+                <p className="card__freezer">{item.freezer}</p>
+              </div>
+              <div className="card__storage-wrapper">
+                <h4 className="card__content-heading">Storing Location</h4>
+                <p className="card__storage">{item.storage}</p>
+              </div>
             </div>
           );
         })}
       </div>
 
-      <div>
-        {vegetablesItems.map((item) => {
+      <div className="card__container">
+        <h2 className="card__heading">Vegetables</h2>
+            {vegetablesItems.map((item) => {
           return (
-            <div key={item.id}>
+            <div key={item.id} className="card__content-wrapper">
               {" "}
-              <p>{item.name}</p>
-              <p>{item.fresh}</p>
-              <p>{item.fridge}</p>
-              <p>{item.freezer}</p>
-              <p>{item.storage}</p>
+              <div className="card__name-wrapper">
+                <h3 className="card__name">{item.name}</h3>
+              </div>
+              <div className="card__fresh-wrapper">
+                <h4 className="card__content-heading">At Freshest</h4>
+                <p className="card__fresh">{item.fresh}</p>
+              </div>
+              <div className="card__fridge-wrapper">
+                <h4 className="card__content-heading">Refrigerator</h4>
+                <p className="card__fridge">{item.fridge}</p>
+              </div>
+              <div className="card__freezer-wrapper">
+                <h4 className="card__content-heading">Freezing</h4>
+                <p className="card__freezer">{item.freezer}</p>
+              </div>
+              <div className="card__storage-wrapper">
+                <h4 className="card__content-heading">Storing Location</h4>
+                <p className="card__storage">{item.storage}</p>
+              </div>
             </div>
           );
         })}
       </div>
-
-      <div>
+      <div className="card__container">
+        <h2 className="card__heading">Fruits</h2>
         {fruitsItems.map((item) => {
           return (
-            <div key={item.id}>
+            <div key={item.id} className="card__content-wrapper">
               {" "}
-              <p>{item.name}</p>
-              <p>{item.fresh}</p>
-              <p>{item.fridge}</p>
-              <p>{item.freezer}</p>
-              <p>{item.storage}</p>
+              <div className="card__name-wrapper">
+                <h3 className="card__name">{item.name}</h3>
+              </div>
+              <div className="card__fresh-wrapper">
+                <h4 className="card__content-heading">At Freshest</h4>
+                <p className="card__fresh">{item.fresh}</p>
+              </div>
+              <div className="card__fridge-wrapper">
+                <h4 className="card__content-heading">Refrigerator</h4>
+                <p className="card__fridge">{item.fridge}</p>
+              </div>
+              <div className="card__freezer-wrapper">
+                <h4 className="card__content-heading">Freezing</h4>
+                <p className="card__freezer">{item.freezer}</p>
+              </div>
+              <div className="card__storage-wrapper">
+                <h4 className="card__content-heading">Storing Location</h4>
+                <p className="card__storage">{item.storage}</p>
+              </div>
             </div>
           );
         })}
       </div>
 
-      <div>
+      <div className="card__container">
+        <h2 className="card__heading">Proteins</h2>
         {meatsItems.map((item) => {
           return (
-            <div key={item.id}>
+            <div key={item.id} className="card__content-wrapper">
               {" "}
-              <p>{item.name}</p>
-              <p>{item.fresh}</p>
-              <p>{item.fridge}</p>
-              <p>{item.freezer}</p>
-              <p>{item.storage}</p>
+              <div className="card__name-wrapper">
+                <h3 className="card__name">{item.name}</h3>
+              </div>
+              <div className="card__fresh-wrapper">
+                <h4 className="card__content-heading">At Freshest</h4>
+                <p className="card__fresh">{item.fresh}</p>
+              </div>
+              <div className="card__fridge-wrapper">
+                <h4 className="card__content-heading">Refrigerator</h4>
+                <p className="card__fridge">{item.fridge}</p>
+              </div>
+              <div className="card__freezer-wrapper">
+                <h4 className="card__content-heading">Freezing</h4>
+                <p className="card__freezer">{item.freezer}</p>
+              </div>
+              <div className="card__storage-wrapper">
+                <h4 className="card__content-heading">Storing Location</h4>
+                <p className="card__storage">{item.storage}</p>
+              </div>
             </div>
           );
         })}
       </div>
 
-      <div>
+      <div className="card__container">
+        <h2 className="card__heading">Pantry Items</h2>
         {pantryItems.map((item) => {
           return (
-            <div key={item.id}>
+            <div key={item.id} className="card__content-wrapper">
               {" "}
-              <p>{item.name}</p>
-              <p>{item.fresh}</p>
-              <p>{item.fridge}</p>
-              <p>{item.freezer}</p>
-              <p>{item.storage}</p>
+              <div className="card__name-wrapper">
+                <h3 className="card__name">{item.name}</h3>
+              </div>
+              <div className="card__fresh-wrapper">
+                <h4 className="card__content-heading">At Freshest</h4>
+                <p className="card__fresh">{item.fresh}</p>
+              </div>
+              <div className="card__fridge-wrapper">
+                <h4 className="card__content-heading">Refrigerator</h4>
+                <p className="card__fridge">{item.fridge}</p>
+              </div>
+              <div className="card__freezer-wrapper">
+                <h4 className="card__content-heading">Freezing</h4>
+                <p className="card__freezer">{item.freezer}</p>
+              </div>
+              <div className="card__storage-wrapper">
+                <h4 className="card__content-heading">Storing Location</h4>
+                <p className="card__storage">{item.storage}</p>
+              </div>
             </div>
           );
         })}
       </div>
 
-      <div>
+      <div className="card__container">
+        <h2 className="card__heading">Condiments, Oils & Spices</h2>
         {condimentsItems.map((item) => {
           return (
-            <div key={item.id}>
+            <div key={item.id} className="card__content-wrapper">
               {" "}
-              <p>{item.name}</p>
-              <p>{item.fresh}</p>
-              <p>{item.fridge}</p>
-              <p>{item.freezer}</p>
-              <p>{item.storage}</p>
+              <div className="card__name-wrapper">
+                <h3 className="card__name">{item.name}</h3>
+              </div>
+              <div className="card__fresh-wrapper">
+                <h4 className="card__content-heading">At Freshest</h4>
+                <p className="card__fresh">{item.fresh}</p>
+              </div>
+              <div className="card__fridge-wrapper">
+                <h4 className="card__content-heading">Refrigerator</h4>
+                <p className="card__fridge">{item.fridge}</p>
+              </div>
+              <div className="card__freezer-wrapper">
+                <h4 className="card__content-heading">Freezing</h4>
+                <p className="card__freezer">{item.freezer}</p>
+              </div>
+              <div className="card__storage-wrapper">
+                <h4 className="card__content-heading">Storing Location</h4>
+                <p className="card__storage">{item.storage}</p>
+              </div>
             </div>
           );
         })}
       </div>
 
-      <div>
+      <div className="card__container">
+        <h2 className="card__heading">Vegan Proteins</h2>
         {veganProteinsItems.map((item) => {
           return (
-            <div key={item.id}>
+            <div key={item.id} className="card__content-wrapper">
               {" "}
-              <p>{item.name}</p>
-              <p>{item.fresh}</p>
-              <p>{item.fridge}</p>
-              <p>{item.freezer}</p>
-              <p>{item.storage}</p>
+              <div className="card__name-wrapper">
+                <h3 className="card__name">{item.name}</h3>
+              </div>
+              <div className="card__fresh-wrapper">
+                <h4 className="card__content-heading">At Freshest</h4>
+                <p className="card__fresh">{item.fresh}</p>
+              </div>
+              <div className="card__fridge-wrapper">
+                <h4 className="card__content-heading">Refrigerator</h4>
+                <p className="card__fridge">{item.fridge}</p>
+              </div>
+              <div className="card__freezer-wrapper">
+                <h4 className="card__content-heading">Freezing</h4>
+                <p className="card__freezer">{item.freezer}</p>
+              </div>
+              <div className="card__storage-wrapper">
+                <h4 className="card__content-heading">Storing Location</h4>
+                <p className="card__storage">{item.storage}</p>
+              </div>
             </div>
           );
         })}
