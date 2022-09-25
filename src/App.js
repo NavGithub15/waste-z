@@ -8,6 +8,7 @@ import { AuthProvider } from './Contexts/AuthContexts';
 import SignUpForm from './components/Authentication/SignUp/SignUpForm';
 import SignInForm from './components/Authentication/SignIn/SignInForm';
 import Storage from './Pages/Storage/Storage';
+import BrowseRecipe from './Pages/BrowseRecipe/BrowseRecipe';
 
 export default function App() {
 
@@ -25,6 +26,7 @@ export default function App() {
               <Route path="/signUp" element={<SignUpForm />} />
               <Route path="/signIn" element={<SignInForm />} />
               <Route path="/storage" element={<Storage />} />
+              <Route path="/recipe" element={<BrowseRecipe />} />
           </Routes >
     </AuthProvider>
   </>

@@ -14,19 +14,19 @@ export default function Cards() {
             <div className="article__card">
                 <img className="article__card-image" src={blueberry} alt="spoiled apple" loading="lazy"/>
                 <div className="article__text-wrapper">
-                    <h3 className="article__text">Storage</h3>
+                    <Link to="/storage" className="article__text">Storage</Link>
                 </div>
             </div>
             <div className="article__card">
                 <img className="article__card-image" src={strawberry} alt="strawberry" loading="lazy"/>
                 <div className="article__text-wrapper">
-                    <Link to="/myStorage"><h3 className="article__text">Track</h3></Link> 
+                    <Link to="/myStorage" className="article__text">Track</Link> 
                 </div>
             </div>
             <div className="article__card">
                 <img className="article__card-image" src={dishImage} alt="dish prep" loading="lazy" />
                 <div className="article__text-wrapper">
-                    <h3 className="article__text">Browse Recipes</h3>
+                    <Link to="/recipe" className="article__text">Browse Recipes</Link>
                 </div>   
             </div>
             <div className="article__card">
