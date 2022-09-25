@@ -1,5 +1,6 @@
 import "./TrackBar.scss"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { red } from "@mui/material/colors"
 
 export default function TrackBar({storageDate, expiryDate}) {
 
@@ -22,23 +23,34 @@ export default function TrackBar({storageDate, expiryDate}) {
     const [storeDate, setStoreDate] = useState(storageTimestamp)
     const [currentDate, setCurrentDate] = useState(todayTimestamp);
     const [expirationDate, setExpirationDate] = useState(expiryTimestamp);
-    const [active, setActive] = useState(false);
+    const [progress, setProgress] = useState(0);
     
     const startDate =  currentDate - storeDate;
     const endDate = expirationDate - storeDate;
 
-    const progress = Math.floor((startDate / endDate)*100)
-    console.log(progress)
+    // const progress = Math.floor((startDate / endDate)*100)
+    // console.log(progress)
 
-    // useEffect(() => {
-    //   setActive(true);
-    // }, []);
+    useEffect(() => {
+      setInterval(() => setProgress(Math.floor((startDate/endDate)*100)),1000)
+    }, []);
 
+    // let colorsStyles = [
+    //   {max:20,color:'red'},
+    //  {max:75,color:'yellow'},
+    //  {max:100,color:'green'}
+    // ];
+
+    // const colors = colorsStyles.find(x => x.max >= progress).color
+
+    const progressStyles = {
+      width: `${progress}%`,
+    };
 
   return (
     <>
     <div className="trackBar">
-    <div className="trackBar__inner"></div>
+    <div className="trackBar__inner" style={progressStyles} progress={progress}></div>
   </div>
   </>
   )

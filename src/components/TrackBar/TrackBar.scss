@@ -6,7 +6,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  height: 1.5rem;
+  height: 1rem;
   width: 100%;
   border: 1px solid rgba($color-outline, 0.4);
   border-radius: 50px;
@@ -14,10 +14,9 @@
 
   &__inner{
     position: absolute;
-    top: 1px;
-    height: 1.2rem;
+    height: 100%;
     width: 100%;
-    background: $color-primary-background;
+    background: $color-secondary-cta;
     border-radius: 25px;
     transition: width 100ms ease-out;
   }
