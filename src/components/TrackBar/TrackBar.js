@@ -38,15 +38,6 @@ export default function TrackBar({ storageDate, expiryDate }) {
     }
   }, []);
 
-
-  // let colorsStyles = [
-  //   {max:20,color:'red'},s
-  //  {max:75,color:'yellow'},
-  //  {max:100,color:'green'}
-  // ];
-
-  // const colors = colorsStyles.find(x => x.max >= progress).color
-
   const progressStyles = {
     width: `${progress}%`,
     backgroundColor: `${color}`,
