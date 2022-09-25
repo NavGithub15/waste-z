@@ -8,7 +8,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0 1rem;
+        padding: 1rem 1rem;
 
         @include tablet{
             padding: 1rem 2rem;
@@ -63,34 +63,29 @@
         }
 
         @include small-laptop{
-            margin-right: 16rem;
+            margin-right: 8rem;
         }
     }
 
     &__link{
         color: $color-global-text;
-        margin: 1rem;
+        margin: 0;
         cursor: pointer;
         &:hover{
             color: $color-interactive-elements;
-            padding: .5rem;
         }
         
         @include tablet{
             &:nth-child(2){
-                margin-left: 4.8rem;
+                margin-left: 0;
             }
         }
         @include small-laptop{
-
-            &:nth-child(2){
-                margin-left: 0rem;
-            }
+            margin: 0rem 1rem;
         }
     }
-
     .active {
-        padding-bottom: .5rem;
+        color: $color-interactive-elements;
         border-bottom: 6px solid rgba($color-outline, 0.4);
     }
 }
