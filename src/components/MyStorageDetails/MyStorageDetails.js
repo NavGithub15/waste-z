@@ -1,7 +1,7 @@
 import "./MyStorageDetails.scss";
 import { myStorage } from "../../Utils/Utils";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+// import { Link, useParams } from "react-router-dom";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase.config";
 import editIcon from "../../styles/assets/icons/edit-24px.svg";
@@ -48,7 +48,7 @@ export default function MyStorageDetails() {
                     src={item.image}
                     alt="food item"/>
                 </div>
-                <TrackBar />
+                <TrackBar storageDate={item.storageDate} expiryDate={item.expiryDate}/>
               </div>
               <div className="details__content-wrapper food">
                 <div className="food__qty-wrapper">
@@ -57,7 +57,7 @@ export default function MyStorageDetails() {
                 </div>
                 <div className="food__timestamp-wrapper">
                   <h4 className="food__content-heading">Expiration Date</h4>
-                  <span className="food__content-text">{item.futureDate}</span>
+                  <span className="food__content-text">{item.expiryDate}</span>
                 </div>
                 <div className="food__icon-wrapper">
                   <img className="food__icon" src={editIcon} alt="edit" />
@@ -83,7 +83,7 @@ export default function MyStorageDetails() {
                   <div className="food__timestamp-wrapper">
                     <h4 className="food__content-heading">Storage Date</h4>
                     <span className="food__content-text">
-                      {item.currentDate}
+                      {item.storageDate}
                     </span>
                   </div>
                 </div>

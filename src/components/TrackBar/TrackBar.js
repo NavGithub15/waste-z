@@ -1,22 +1,32 @@
 import "./TrackBar.scss"
 import { useState } from "react"
 
-export default function TrackBar() {
+export default function TrackBar({storageDate, expiryDate}) {
+
 
     // function to convert timestamp to epoch
     function epoch (date) {
         return Date.parse(date)
       }
       
-      const dateToday = new Date()
-      const timestamp = epoch(dateToday)
-    
-    //   console.log(timestamp)
+      // storage timestamp into epoch
+      const storageTimestamp = epoch(storageDate)
 
-    const [storeDate, setStoreDate] = useState()
-    const [currentDate, setCurrentDate] = useState(new Date());
-    const [expiryDate, setExpiryDate] = useState();
-    const [color, setColor] = useState(0);
+      // expiry timestamp into epoch
+      const expiryTimestamp = epoch(expiryDate)
+
+      // current timestamp into epoch
+      const dateToday = new Date()
+      const todayTimestamp = epoch(dateToday)
+    
+    const [storeDate, setStoreDate] = useState(storageTimestamp)
+    const [currentDate, setCurrentDate] = useState(todayTimestamp);
+    const [expirationDate, setExpirationDate] = useState(expiryTimestamp);
+    const [active, setActive] = useState(false);
+
+    // useEffect(() => {
+    //   setActive(true);
+    // }, []);
 
 
   return (

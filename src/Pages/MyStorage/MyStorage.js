@@ -18,8 +18,8 @@ export default function MyStorage() {
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [subCategory, setSubCategory] = useState("");
-  const [currentDate, setCurrentDate] = useState(date);
-  const [futureDate, setFutureDate] = useState(date);
+  const [storageDate, setStorageDate] = useState(date);
+  const [expiryDate, setExpiryDate] = useState(date);
   const [quantity, setQuantity] = useState(0)
   const [imageUpload, setImageUpload] = useState([])
   const [imageName, setImageName] = useState([]);
@@ -67,7 +67,7 @@ export default function MyStorage() {
   const handleAddSubmit = async(e) => {
     e.preventDefault();
 
-    if(!name || !category ||  !subCategory || !currentDate || !futureDate || !quantity ) {
+    if(!name || !category ||  !subCategory || !storageDate || !expiryDate || !quantity ) {
       setErrorMessage(true)
       return;
     } else {
@@ -77,8 +77,8 @@ export default function MyStorage() {
         image: imageName,
         category: category,
         subCategory: subCategory,
-        futureDate: futureDate,
-        currentDate: currentDate,
+        expiryDate: expiryDate,
+        storageDate: storageDate,
         timestamp: serverTimestamp(),
         quantity: quantity
       }) 
@@ -183,12 +183,12 @@ export default function MyStorage() {
           <div className="storage__date-wrapper">
             <h4 className="storage__date-label">Storage Date</h4>
             <input className="storage__date" type="date"
-            onChange={(e) => setCurrentDate(e.target.value)}/>
+            onChange={(e) => setStorageDate(e.target.value)}/>
           </div>
           <div className="storage__date-wrapper">
             <h4 className="storage__date-label">Expiration Date</h4>
             <input className="storage__date" type="date"
-             onChange={(e) => setFutureDate(e.target.value)}/>
+             onChange={(e) => setExpiryDate(e.target.value)}/>
           </div>
           <div className="storage__cta-wrapper">
             <Link  to="/"className="storage__cta">Cancel</Link>
