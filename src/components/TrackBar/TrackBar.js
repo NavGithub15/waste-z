@@ -1,57 +1,62 @@
 import "./TrackBar.scss"
 import { useState, useEffect } from "react"
-import { red } from "@mui/material/colors"
 
-export default function TrackBar({storageDate, expiryDate}) {
+export default function TrackBar({ storageDate, expiryDate }) {
+  const [progress, setProgress] = useState(0);
+  const [color, setColor] = useState("")
+
+  // function to convert timestamp to epoch
+  function epoch(date) {
+    return Date.parse(date)
+  }
+  // storage timestamp into epoch
+  const storageTimestamp = epoch(storageDate)
+
+  // expiry timestamp into epoch
+  const expiryTimestamp = epoch(expiryDate)
+
+  // current timestamp into epoch
+  const dateToday = new Date()
+  const todayTimestamp = epoch(dateToday)
+
+  const startDate = todayTimestamp - storageTimestamp;
+  const endDate = expiryTimestamp - storageTimestamp;
+
+  // const progress = Math.floor((startDate / endDate)*100)
+  // console.log(progress)
+
+  useEffect(() => {
+    setInterval(() => setProgress(Math.floor((startDate / endDate) * 100)), 1000)
+    if (progress <= 25) {
+      setColor("#158463");
+    } else if (progress <= 50) {
+      setColor("#FFEA61")
+    } else if (progress <= 75) {
+      setColor("#FD9345")
+    } else {
+      return setColor("#CF5C5C")
+    }
+  }, []);
 
 
-    // function to convert timestamp to epoch
-    function epoch (date) {
-        return Date.parse(date)
-      }
+  // let colorsStyles = [
+  //   {max:20,color:'red'},s
+  //  {max:75,color:'yellow'},
+  //  {max:100,color:'green'}
+  // ];
 
-      // storage timestamp into epoch
-      const storageTimestamp = epoch(storageDate)
+  // const colors = colorsStyles.find(x => x.max >= progress).color
 
-      // expiry timestamp into epoch
-      const expiryTimestamp = epoch(expiryDate)
-
-      // current timestamp into epoch
-      const dateToday = new Date()
-      const todayTimestamp = epoch(dateToday)
-    
-    const [storeDate, setStoreDate] = useState(storageTimestamp)
-    const [currentDate, setCurrentDate] = useState(todayTimestamp);
-    const [expirationDate, setExpirationDate] = useState(expiryTimestamp);
-    const [progress, setProgress] = useState(0);
-    
-    const startDate =  currentDate - storeDate;
-    const endDate = expirationDate - storeDate;
-
-    // const progress = Math.floor((startDate / endDate)*100)
-    // console.log(progress)
-
-    useEffect(() => {
-      setInterval(() => setProgress(Math.floor((startDate/endDate)*100)),1000)
-    }, []);
-
-    // let colorsStyles = [
-    //   {max:20,color:'red'},
-    //  {max:75,color:'yellow'},
-    //  {max:100,color:'green'}
-    // ];
-
-    // const colors = colorsStyles.find(x => x.max >= progress).color
-
-    const progressStyles = {
-      width: `${progress}%`,
-    };
+  const progressStyles = {
+    width: `${progress}%`,
+    backgroundColor: `${color}`,
+  };
 
   return (
     <>
-    <div className="trackBar">
-    <div className="trackBar__inner" style={progressStyles} progress={progress}></div>
-  </div>
-  </>
+      <div className="trackBar">
+        <div className="trackBar__inner" style={progressStyles} progress={progress}></div>
+      </div>
+    </>
   )
 }
