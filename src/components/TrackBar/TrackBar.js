@@ -8,7 +8,7 @@ export default function TrackBar({storageDate, expiryDate}) {
     function epoch (date) {
         return Date.parse(date)
       }
-      
+
       // storage timestamp into epoch
       const storageTimestamp = epoch(storageDate)
 
@@ -23,6 +23,12 @@ export default function TrackBar({storageDate, expiryDate}) {
     const [currentDate, setCurrentDate] = useState(todayTimestamp);
     const [expirationDate, setExpirationDate] = useState(expiryTimestamp);
     const [active, setActive] = useState(false);
+    
+    const startDate =  currentDate - storeDate;
+    const endDate = expirationDate - storeDate;
+
+    const progress = Math.floor((startDate / endDate)*100)
+    console.log(progress)
 
     // useEffect(() => {
     //   setActive(true);
