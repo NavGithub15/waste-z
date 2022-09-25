@@ -7,6 +7,11 @@ import RecipeCards from "../../components/RecipeCards/RecipeCards";
 export default function BrowseRecipe() {
   const [recipeValue, setRecipeValue] = useState([]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setRecipeValue(e.target.value);
+  }
+
   function getSearchData() {
     fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${recipeValue}&apiKey=${API_KEY}`)
     .then((response) => response.json())
@@ -20,11 +25,6 @@ export default function BrowseRecipe() {
   useEffect(() => {
     getSearchData();
   },[])
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setRecipeValue(e.target.value);
-  }
 
   return (
     <section className="recipe">
@@ -49,6 +49,7 @@ export default function BrowseRecipe() {
       recipeValue.map &&
       recipeValue.map((recipe) => {
         <RecipeCards recipe={recipe} key={recipe.id} />
+        console.log(recipe)
       }) }
     </section>
   );
