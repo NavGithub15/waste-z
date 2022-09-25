@@ -17,8 +17,10 @@ export default function App() {
         <Header />
           <Routes>
             <Route path="/" element={<HomePage />}/>
-              <Route path="/myStorage" element={<ProtectedRoute>
-                <MyStorage />
+              <Route path="/myStorage"
+                element={
+                <ProtectedRoute>
+                  <MyStorage />
                 </ProtectedRoute>} />
               <Route path="/signUp" element={<SignUpForm />} />
               <Route path="/signIn" element={<SignInForm />} />

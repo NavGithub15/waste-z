@@ -5,9 +5,9 @@ import { useState, useEffect } from 'react';
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db, storage } from "../../firebase.config";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
-import { myStorage } from "../../Utils/Utils";
 import { v4 } from "uuid";
 import QuantityPicker from '../../components/QuantityPicker/QuantityPicker';
+import MyStorageDetails from "../../components/MyStorageDetails/MyStorageDetails";
 // import imageIcon from "../../styles/assets/icons/Circle-icons-image.svg.png";
 
 
@@ -17,16 +17,16 @@ export default function MyStorage() {
 
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
+  const [subCategory, setSubCategory] = useState("");
   const [currentDate, setCurrentDate] = useState(date);
   const [futureDate, setFutureDate] = useState(date);
   const [quantity, setQuantity] = useState(0)
   const [imageUpload, setImageUpload] = useState([])
   const [imageName, setImageName] = useState([]);
   const [errorMessage, setErrorMessage] = useState(false)
-  const [storageData, setStorageData] = useState([])
-
 
   const { currentUser, logOut, } = useAuth();
+
   const navigate = useNavigate();
 
   // Handle logout 
@@ -45,9 +45,9 @@ export default function MyStorage() {
     setImageUpload(event.target.files[0]);
   };
 
-  // useEffect (()=> { 
-  //   uploadImage();
-  // }, [imageUpload])
+  useEffect (()=> { 
+    uploadImage();
+  }, [imageUpload])
 
   // function to upload image to database
   const uploadImage = () =>{
@@ -63,16 +63,11 @@ export default function MyStorage() {
     });
   };
 
-  // // useEffect to get the data from database
-  // useEffect(() => {
-  //   myStorage().then(response => setStorageData(response))
-  // },[])
-
   // Handle submit to add food item to database
   const handleAddSubmit = async(e) => {
     e.preventDefault();
 
-    if(!name || !category || !currentDate || !futureDate || !quantity ) {
+    if(!name || !category ||  !subCategory || !currentDate || !futureDate || !quantity ) {
       setErrorMessage(true)
       return;
     } else {
@@ -81,6 +76,7 @@ export default function MyStorage() {
         name: name,
         image: imageName,
         category: category,
+        subCategory: subCategory,
         futureDate: futureDate,
         currentDate: currentDate,
         timestamp: serverTimestamp(),
@@ -93,17 +89,6 @@ export default function MyStorage() {
     e.target.reset();
     setQuantity(0);
   }
-
-  // handle delete to delete food item
-
-  // const handleDelete = async (id) => {
-  //   try {
-  //     await deleteDoc(doc(db, "MyStorage", id));
-  //     setData(data.filter((item) => item.id !== id));
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   // function to increase and decrease the quantity
   const increment = () => {
@@ -142,7 +127,7 @@ export default function MyStorage() {
             {/* <img className="storage__icon" 
               src={imageIcon}
               alt="upload icon" /> */}
-              </label>
+            </label>
               <input type="file"
                 className="storage__input-file" 
                 accept="image/x-png, image/jpeg"
@@ -154,26 +139,55 @@ export default function MyStorage() {
             <input className="storage__input"type="text" name="name"
               placeholder="Item Name" onChange={(e) => setName(e.target.value)}/>
           </div>
-          <QuantityPicker className="storage__qty-picker"
-            increment={increment} decrement={decrement} quantity={quantity}/>
+          <QuantityPicker
+            className="storage__qty-picker"
+            increment={increment} decrement={decrement}
+            quantity={quantity}/>
+
           <div className="storage__option-wrapper">
             <h4 className="storage__option-label">Storing Location</h4>
             <select className="storage__option-select" name="category"
-             onChange={(e) => setCategory(e.target.value)}>
-              <option className="storage__option" defaultValue> -- Select an option -- </option>
-              <option className="storage__option" value="fridge">Fridge</option>
-              <option className="storage__option" value="pantry">Pantry</option>
-              <option className="storage__option" value="freezer">Freezer</option>
+              onChange={(e) => setCategory(e.target.value)}>
+              <option className="storage__option"
+               defaultValue> -- Select an option -- </option>
+              <option className="storage__option"
+               value="fridge">Fridge</option>
+              <option className="storage__option"
+               value="pantry">Pantry</option>
+              <option className="storage__option"
+               value="freezer">Freezer</option>
+            </select>
+          </div>
+          <div className="storage__option-wrapper">
+          <h4 className="storage__option-label">Category</h4>
+          <select className="storage__option-select" name="category"
+              onChange={(e) => setSubCategory(e.target.value)}>
+              <option className="storage__option"
+               defaultValue> -- Select an option -- </option>
+              <option className="storage__option"
+               value="fruits">Fruits</option>
+              <option className="storage__option"
+               value="vegetables">Vegetables</option>
+              <option className="storage__option"
+               value="protein">Proteins</option>
+              <option className="storage__option"
+               value="dairy">Dairy & Eggs</option>
+              <option className="storage__option"
+               value="pantry">Pantry Staples</option>
+              <option className="storage__option"
+               value="spices">Oils, Condiments & Spices</option>
+              <option className="storage__option"
+               value="vegan">Vegan Proteins</option>
             </select>
           </div>
           <div className="storage__date-wrapper">
-            <h4 className="storage__date-label">Purchased Date</h4>
+            <h4 className="storage__date-label">Storage Date</h4>
             <input className="storage__date" type="date"
-              onChange={(e) => setCurrentDate(e.target.value)}/>
-              </div>
-              <div className="storage__date-wrapper">
-            <h4 className="storage__date-label">Expiry Date</h4>
-              <input className="storage__date" type="date"
+            onChange={(e) => setCurrentDate(e.target.value)}/>
+          </div>
+          <div className="storage__date-wrapper">
+            <h4 className="storage__date-label">Expiration Date</h4>
+            <input className="storage__date" type="date"
              onChange={(e) => setFutureDate(e.target.value)}/>
           </div>
           <div className="storage__cta-wrapper">
@@ -182,23 +196,7 @@ export default function MyStorage() {
           </div>
         </form>
       </div>
-
-      {/* <div>
-        {storageData.map((data) => {
-          return (
-            <div key={data.id}>
-              {" "}
-              <p>{data.name}</p>
-              <p>{data.category}</p>
-              <p>{data.currentDate}</p>
-              <p>{data.futureDate}</p>
-              <p>{data.quantity}</p>
-              <img src={data.image} alt="user data" width={150}/>
-            </div>
-          );
-        })}
-      </div> */}
-
+      <MyStorageDetails />
     </section>
   );
 };
