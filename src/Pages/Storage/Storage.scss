@@ -2,3 +2,64 @@
 @use "../../styles/partials/fonts" as *;
 @use "../../styles/partials/mixins" as *;
 
+.card{
+    padding: 1rem;
+
+    @include tablet{
+        padding: 2rem;
+    }
+
+    &-title{
+        margin-bottom: 0.5rem;
+    }
+
+    &__heading{
+        margin-bottom: 1rem;
+        padding-bottom: 0.3rem;
+        border-bottom: 3px solid rgba($color-outline, 0.4);
+    }
+
+    &__container{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        border-top: 3px solid rgba($color-outline, 0.4);;
+
+        @include tablet{
+            flex-direction: row;
+            flex-wrap: wrap;
+
+        }
+    }
+
+    &__content-wrapper{
+        padding: 1rem;
+        border: 1px solid rgba($color-divider, 0.5);
+        border-radius: 4px;
+        box-shadow: .3rem .5rem .3125rem rgba($color-interactive-elements, 0.4);
+        margin: 1rem 0;
+        max-width: 20rem;
+        height: fit-content;
+
+        @include tablet{
+            margin: 2rem;
+        }
+    }
+
+    &__name-wrapper{
+        margin-bottom: 0.5rem ;
+    }
+
+    &__fresh-wrapper{
+        @extend .card__name-wrapper;
+    }
+
+    &__fridge-wrapper{
+        @extend .card__name-wrapper;
+    }
+
+    &__freezer-wrapper{
+        @extend .card__name-wrapper;
+
+    }
+}
