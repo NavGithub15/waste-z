@@ -22,8 +22,6 @@ export default function TrackBar({ storageDate, expiryDate }) {
   const startDate = todayTimestamp - storageTimestamp;
   const endDate = expiryTimestamp - storageTimestamp;
 
-  // const progress = Math.floor((startDate / endDate)*100)
-  // console.log(progress)
 
   useEffect(() => {
     setProgress(Math.floor((startDate / endDate) * 100))

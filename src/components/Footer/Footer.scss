@@ -4,9 +4,11 @@
 
 .footer{
     padding: 1rem;
+    background-color: rgba($color-quaternary-background, 0.8);
 
     &__wrapper{
         display: flex;
+        flex-direction: column;
     }
 
 }

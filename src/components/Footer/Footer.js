@@ -12,7 +12,8 @@ export default function Footer() {
                 </div>
                 <div className="footer__lists">
                     <h3>Privacy</h3>
-                    <h3>Legal</h3>
+                    <h3>Resources</h3>
+                    <h3>Developers</h3>
                 </div>
                 <div className="footer__icons">
                     <FaGithub />
