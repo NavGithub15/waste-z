@@ -13,6 +13,41 @@
         margin-bottom: 0.5rem;
     }
 
+    &__input{
+        width: 100%;
+        height: 2.5rem;
+        margin-bottom: 1rem;
+        border-radius: 6px;
+        padding: 1rem;
+        outline: none;
+        border: 1px solid rgba($color-divider, 0.2);
+        &:focus{
+            border: 1px solid rgba($color-outline, 0.4);
+        }
+        @include tablet{
+            width: 100%;
+        }
+    }
+
+
+    &__cta{
+        width: 100%;
+        height: 2.5rem;
+        font-weight: 600;
+        background-color: rgba($color-cta-background, 0.6);
+        color: $color-global-text;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        &:hover{
+            background-color: $color-interactive-elements;
+            color: $color-primary-background;
+        }
+        @include tablet{
+            width: 8rem;
+        }
+    }
+
     &__heading{
         margin-bottom: 1rem;
         padding-bottom: 0.3rem;
@@ -23,7 +58,6 @@
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        border-top: 3px solid rgba($color-outline, 0.4);;
 
         @include tablet{
             flex-direction: row;

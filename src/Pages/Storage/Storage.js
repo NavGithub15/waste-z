@@ -21,10 +21,28 @@ export default function Storage() {
     veganProteins().then(response => setVeganProteinsItems(response))   
   }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
   return (
 
     <section className="storage__card card">
       <h1 className="card-title">Storage Guide</h1>
+      <div className="card__form-wrapper">
+        <form onSubmit={handleSubmit}>
+        <input
+            className="card__input"
+            name="search"
+            onChange={handleSubmit}
+            placeholder="Type to search..."/>
+                    <div className="card__cta-wrapper">
+          <button className="card__cta" type="submit">
+            Search
+          </button>
+        </div>
+        </form>
+        </div>
       <div className="card__container">
         {dairyItems.map((item) => {
           return (
