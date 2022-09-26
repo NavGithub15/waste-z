@@ -23,6 +23,8 @@
     "react-date-picker": "^9.0.0",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.0.3",
+    "react-icons": "^4.4.0",
+    "react-livechat": "^1.1.1",
     "react-quantity-picker": "^1.0.3",
     "react-router-dom": "^6.4.0",
     "react-scripts": "5.0.1",

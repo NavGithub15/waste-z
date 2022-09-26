@@ -1,0 +1,12 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+
+.footer{
+    padding: 1rem;
+
+    &__wrapper{
+        display: flex;
+    }
+
+}

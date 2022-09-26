@@ -9,6 +9,7 @@ import SignUpForm from './components/Authentication/SignUp/SignUpForm';
 import SignInForm from './components/Authentication/SignIn/SignInForm';
 import Storage from './Pages/Storage/Storage';
 import BrowseRecipe from './Pages/BrowseRecipe/BrowseRecipe';
+import Footer from './components/Footer/Footer';
 
 export default function App() {
 
@@ -28,6 +29,7 @@ export default function App() {
               <Route path="/storage" element={<Storage />} />
               <Route path="/recipe" element={<BrowseRecipe />} />
           </Routes >
+          <Footer />
     </AuthProvider>
   </>
   )
