@@ -26,7 +26,10 @@ export default function TrackBar({ storageDate, expiryDate }) {
   // console.log(progress)
 
   useEffect(() => {
-    setInterval(() => setProgress(Math.floor((startDate / endDate) * 100)), 1000)
+    setProgress(Math.floor((startDate / endDate) * 100))
+  }, []);
+
+  useEffect(() => {
     if (progress <= 25) {
       setColor("#158463");
     } else if (progress <= 50) {
@@ -36,12 +39,19 @@ export default function TrackBar({ storageDate, expiryDate }) {
     } else {
       return setColor("#CF5C5C")
     }
-  }, []);
+  },[color])
+
 
   const progressStyles = {
     width: `${progress}%`,
     backgroundColor: `${color}`,
   };
+  
+if (!progress){
+  return (
+  <h1>Loading......</h1>
+  )
+}
 
   return (
     <>
