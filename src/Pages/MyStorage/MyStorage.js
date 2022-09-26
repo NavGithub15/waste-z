@@ -106,7 +106,7 @@ export default function MyStorage() {
       }
     });
   }
-
+  
   return (
     <section className="storage">
       

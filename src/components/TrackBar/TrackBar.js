@@ -1,5 +1,5 @@
 import "./TrackBar.scss"
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
 export default function TrackBar({ storageDate, expiryDate }) {
   const [progress, setProgress] = useState(0);
@@ -33,7 +33,7 @@ export default function TrackBar({ storageDate, expiryDate }) {
     if (progress <= 25) {
       setColor("#158463");
     } else if (progress <= 50) {
-      setColor("#FFEA61")
+      setColor("#158463")
     } else if (progress <= 75) {
       setColor("#FD9345")
     } else {

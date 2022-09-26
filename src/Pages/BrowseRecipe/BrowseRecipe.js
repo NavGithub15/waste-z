@@ -17,6 +17,7 @@ export default function BrowseRecipe() {
     .then((response) => response.json())
     .then((data) => {
       setRecipeValue(data)
+      console.log(recipeValue)
     })
     .catch(() => {
       console.log("error")
@@ -24,6 +25,7 @@ export default function BrowseRecipe() {
   }
   useEffect(() => {
     getSearchData();
+    
   },[])
 
   return (

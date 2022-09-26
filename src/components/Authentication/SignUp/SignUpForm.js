@@ -6,9 +6,8 @@ function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [PasswordError, setPasswordError] = useState(false)
   const navigate = useNavigate();
   const { signUp } = useAuth();
   
@@ -17,13 +16,13 @@ function SignUpForm() {
     e.preventDefault();
 
         if (password !== confirmPassword) {
-      return setPasswordError(true);
+      return setErrorMessage("Password does not match");
     }
     try {
       await signUp(email, password, confirmPassword);
       navigate("/signIn");
     } catch {
-      setError("Failed to create an account! Please try again");
+      setError(true);
       setErrorMessage("Please fill out the fields!")
     }
   };
@@ -33,8 +32,7 @@ function SignUpForm() {
       <div className="auth__container">
         <h2 className="auth__title">Sign up</h2>
   
-      {error && <label className="error">{errorMessage}</label>}
-      {PasswordError && <span className="auth__error">Password does not match</span>}
+      {errorMessage && <label className="error">{errorMessage}</label>}
 
     <form onSubmit={handleSubmit}>
         <div className="auth__input-wrapper">

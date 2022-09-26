@@ -7,9 +7,9 @@ export default function QuantityPicker({increment, decrement, quantity}) {
       <div className="qty">
         <h4 className="qty__text">Quantity</h4>
         <div className="qty__cta-wrapper">
-        <button className="qty__cta" type="button" onClick={increment}><img className="qty__icon" src={addIcon} alt="add icon" /></button>
-        <span className="qty__number">{quantity}</span>
         <button className="qty__cta" type="button" onClick={decrement}> <img className="qty__icon" src={removeIcon} alt="remove icon" /> </button>
+        <span className="qty__number">{quantity}</span>
+        <button className="qty__cta" type="button" onClick={increment}><img className="qty__icon" src={addIcon} alt="add icon" /></button>
         </div>
       </div>
     );

@@ -1,6 +1,5 @@
 import "./Footer.scss";
 import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
-import LiveChat from "react-livechat";
 export default function Footer() {
     return (
         <footer className="footer">
@@ -26,7 +25,6 @@ export default function Footer() {
             <div className="footer__copyright">
                 <p>Copyright: <span>{new Date().getFullYear()}</span> ⓒ</p>
             </div>
-            <LiveChat license={12026424} />
         </footer>
     )
 }

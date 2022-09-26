@@ -7,6 +7,7 @@ import { db } from "../../firebase.config";
 import editIcon from "../../styles/assets/icons/edit-24px.svg";
 import deleteIcon from "../../styles/assets/icons/delete_outline-24px.svg";
 import TrackBar from "../TrackBar/TrackBar";
+import ExpiryTrackDate from "../ExpiryTrackDate/ExpiryTrackDate";
 
 export default function MyStorageDetails() {
   const [storageData, setStorageData] = useState([]);
@@ -25,6 +26,43 @@ export default function MyStorageDetails() {
       console.log(err);
     }
   };
+
+
+  // // function to convert timestamp to epoch
+  // function epoch(date) {
+  //   return Date.parse(date)
+  // }
+  // // storage timestamp into epoch
+  // const storageTimestamp = epoch(storageDate)
+
+  // // expiry timestamp into epoch
+  // const expiryTimestamp = epoch(expiryDate)
+
+  // // current timestamp into epoch
+  // const dateToday = new Date()
+  // const todayTimestamp = epoch(dateToday)
+
+  // const startDate = todayTimestamp - storageTimestamp;
+  // const endDate = expiryTimestamp - storageTimestamp;
+
+  // // const progress = Math.floor((startDate / endDate)*100)
+  // // console.log(progress)
+
+  // useEffect(() => {
+  //   setProgress(Math.floor((startDate / endDate) * 100))
+  // }, []);
+
+  // useEffect(() => {
+  //   if (progress <= 25) {
+  //     setColor("#158463");
+  //   } else if (progress <= 50) {
+  //     setColor("#FFEA61")
+  //   } else if (progress <= 75) {
+  //     setColor("#FD9345")
+  //   } else {
+  //     return setColor("#CF5C5C")
+  //   }
+  // },[color])
 
   if (!storageData) {
     return <p>You have no item in the storage</p>;
@@ -55,10 +93,7 @@ export default function MyStorageDetails() {
                   <h4 className="food__content-heading">QTY</h4>
                   <span className="food__content-text">{item.quantity}</span>
                 </div>
-                <div className="food__timestamp-wrapper">
-                  <h4 className="food__content-heading">Expiration Date</h4>
-                  <span className="food__content-text">{item.expiryDate}</span>
-                </div>
+                <ExpiryTrackDate storageDate={item.storageDate} expiryDate={item.expiryDate}/>
                 <div className="food__icon-wrapper">
                   <img className="food__icon" src={editIcon} alt="edit" />
                   <img
