@@ -4,6 +4,7 @@
 
 .storage{
     padding: 1rem;
+    background-color: rgba($color-hamburger-background, 0.1);
 
     @include tablet{
         display: flex;
@@ -19,8 +20,9 @@
     &__container{
         display: flex;
         flex-direction: column;
-        border: 1px solid rgba($color-divider, 0.5);
-        box-shadow: 0rem .125rem .3125rem rgba(19, 24, 44, 0.4);
+        background-color: $color-primary-background;
+        border: 0px solid rgba($color-divider, 0.5);
+        box-shadow: .3rem .3rem .3rem rgba(19, 24, 44, 0.4);
         border-radius: 4px;
         padding: 1rem;
         max-width: 250px;

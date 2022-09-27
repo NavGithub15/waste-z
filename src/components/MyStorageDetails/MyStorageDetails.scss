@@ -6,27 +6,35 @@
     margin-top: 1rem;
 
     &__container{
-        padding: 1rem 0;
-        margin: 1rem 0;
         display: flex;
         flex-direction: column;
-        border-bottom: 1px solid rgba($color-divider, 0.3);
-        border-top: 1px solid rgba($color-divider, 0.3);
+        background-color: $color-primary-background;
+        border: 0px solid rgba($color-divider, 0.5);
+        box-shadow: .3rem .3rem .3rem rgba(19, 24, 44, 0.4);
+        border-radius: 4px;
+        padding: 1rem 0;
+        margin: 1rem 0;
 
         @include tablet{
-            border: 1px solid rgba($color-divider, 0.5);
-            box-shadow: 0.1rem 0.1rem .1rem rgba(19, 24, 44, 0.4);
-            border-radius: 4px;
+            
         }
     }
 
-    &__title-wrapper{
+    &__title-trackBar-wrapper{
+        display: flex;
         margin-bottom: 0.5rem;
+        padding: 0 1rem;
     }
 
-    &__img-trackBar-wrapper{
+    &__food-title{
+        margin-right: 1rem;
+
+    }
+
+    &__img-wrapper{
         display: flex;
         align-items: center;
+        padding: 0 1rem;
     }
 
     &__image-wrapper{
@@ -44,17 +52,25 @@
 }
 
 .food{
-    margin-top: 1rem;
+
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+
 
     &__content-heading{
         text-transform: uppercase;
     }
 
+    &__qty-wrapper{
+        margin-left: 1rem;
+    }
+
     &__icon-wrapper{
         display: flex;
         justify-content: space-between;
+        margin-top: 1rem;
+        margin-left: 1rem;
     }
 
     &__icon{

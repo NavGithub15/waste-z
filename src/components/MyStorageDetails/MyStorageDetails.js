@@ -3,7 +3,7 @@ import { useState } from "react";
 import { deleteDoc, doc, } from "firebase/firestore";
 import { db } from "../../firebase.config";
 import editIcon from "../../styles/assets/icons/icons8-edit-24.png";
-import deleteIcon from "../../styles/assets/icons/icons8-delete-30.png";
+import deleteIcon from "../../styles/assets/icons/delete_outline-24px.svg";
 import TrackBar from "../TrackBar/TrackBar";
 import ExpiryTrackDate from "../ExpiryTrackDate/ExpiryTrackDate";
 
@@ -35,19 +35,18 @@ export default function MyStorageDetails({item}) {
     <>
       <div className="details">
             <div className="details__container dropdown">
-              <div className="details__title-wrapper">
+              <div className="details__title-trackBar-wrapper">
                 <h3 className="details__food-title">{item.name}</h3>
+                <TrackBar storageDate={item.storageDate} expiryDate={item.expiryDate}/>
               </div>
-              <div className="details__img-trackBar-wrapper">
+              <div className="details__img-wrapper">
                 <div className="details__image-wrapper">
                     <img
                     className="details__image"
                     src={item.image}
                     alt="food item"/>
                 </div>
-                <TrackBar storageDate={item.storageDate} expiryDate={item.expiryDate}/>
-              </div>
-              <div className="details__content-wrapper food">
+                <div className="details__content-wrapper food">
                 <div className="food__qty-wrapper">
                   <h4 className="food__content-heading">QTY</h4>
                   <span className="food__content-text">{item.quantity}</span>
@@ -61,6 +60,7 @@ export default function MyStorageDetails({item}) {
                     onClick={() => handleDelete(item.id)}
                     alt="delete"/>
                 </div>
+              </div>
               </div>
               <div className="dropdown__container">
                 <div className="dropdown-menu">
