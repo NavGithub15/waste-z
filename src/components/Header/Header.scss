@@ -4,6 +4,32 @@
 
 .header{
 
+    &__user-wrapper{
+        background-color: rgba($color-quaternary-background, 0.6);
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        max-width: 120rem;
+        margin: 0 auto;
+
+        @include tablet{
+
+        }
+    }
+
+    &__user-cta{
+        background-color: transparent;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: ease-in-out;
+        &:hover{
+            transform:scale(1.2);
+            border-radius: 4px;
+            color: $color-secondary-cta;
+        }
+    }
+
     &__container{
         display: flex;
         justify-content: center;

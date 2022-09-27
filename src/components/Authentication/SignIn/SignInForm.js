@@ -16,7 +16,7 @@ export default function SignInForm() {
 
     if (email === "" || password === "") {
       setError(true);
-      return setErrorMessage("Fields are empty");
+      return setErrorMessage("Please fill out the empty fields!!!");
     };
     try {
       await logIn(email, password)

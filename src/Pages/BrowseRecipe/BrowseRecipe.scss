@@ -54,6 +54,7 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
+        margin-bottom: 1rem;
 
         @include tablet{
         }
@@ -72,7 +73,7 @@
         outline: none;
         border: 1px solid rgba($color-divider, 0.2);
         &:focus{
-            border: 1px solid rgba($color-outline, 0.4);
+            border: 3px solid rgba($color-outline, 0.6);
         }
         @include tablet{
             width: 100%;

@@ -57,7 +57,7 @@ function SignUpForm() {
             placeholder="Confirm Password"/> 
         </div>
         <p className="auth__link-text">
-          Already have an account yet ?{" "}
+          Already have an account ?{" "}
           <Link to="/signIn" className="auth__text-link">
             Sign in.
           </Link>

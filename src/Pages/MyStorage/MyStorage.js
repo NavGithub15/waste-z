@@ -1,7 +1,6 @@
 import "./MyStorage.scss";
-import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../../Contexts/AuthContexts';
 import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db, storage } from "../../firebase.config";
 import { onSnapshot } from "firebase/firestore";
@@ -27,20 +26,6 @@ export default function MyStorage() {
   const [errorMessage, setErrorMessage] = useState(false)
   const [storageData, setStorageData] = useState([]);
 
-  const { currentUser, logOut, } = useAuth();
-
-  const navigate = useNavigate();
-
-  // Handle logout 
-  const handleLogout = async () => {
-    try {
-      await logOut();
-      navigate('/');
-      console.log('You are logged out')
-    } catch (e) {
-      console.log(e.error);
-    }
-  };
 
   // handle image submit
   const handleImageSubmit = (event) => {
@@ -133,14 +118,6 @@ export default function MyStorage() {
 
   return (
     <section className="storage">
-      {/* <div className="storage__user-wrapper">
-        <p className="storage__user">
-          <span className="storage__user-uppercase">Welcome! </span>
-          {currentUser && currentUser.email}</p>
-        <span onClick={handleLogout} className="storage__user-cta">
-          Log Out
-        </span>
-      </div> */}
       <div className="storage__container">
       <h3 className="storage__title">Add new item</h3>
         {errorMessage && <p>Please fill out all the fields!!</p>}
