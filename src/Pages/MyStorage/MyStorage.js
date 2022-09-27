@@ -4,6 +4,7 @@ import { useAuth } from '../../Contexts/AuthContexts';
 import { useState, useEffect } from 'react';
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db, storage } from "../../firebase.config";
+import { onSnapshot } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
 import QuantityPicker from '../../components/QuantityPicker/QuantityPicker';
@@ -24,7 +25,7 @@ export default function MyStorage() {
   const [imageUpload, setImageUpload] = useState([])
   const [imageName, setImageName] = useState([]);
   const [errorMessage, setErrorMessage] = useState(false)
-  const [storageRender, setStorageRender] = useState(false)
+  const [storageData, setStorageData] = useState([]);
 
   const { currentUser, logOut, } = useAuth();
 
@@ -46,12 +47,12 @@ export default function MyStorage() {
     setImageUpload(event.target.files[0]);
   };
 
-  useEffect (()=> { 
+  useEffect(() => {
     uploadImage();
   }, [imageUpload])
 
   // function to upload image to database
-  const uploadImage = () =>{
+  const uploadImage = () => {
     const imageName = new Date().getTime() + imageUpload.name + v4()
     const imageRef = ref(storage, imageName);
     uploadBytes(imageRef, imageUpload).then(() => {
@@ -65,34 +66,53 @@ export default function MyStorage() {
   };
 
   // Handle submit to add food item to database
-  const handleAddSubmit = async(e) => {
+  const handleAddSubmit = async (e) => {
     e.preventDefault();
 
-    if(!name || !category ||  !subCategory || !storageDate || !expiryDate || !quantity ) {
+    if (!name || !category || !subCategory || !storageDate || !expiryDate || !quantity) {
       setErrorMessage(true)
       return;
     } else {
-      try { 
-        await addDoc(collection(db, "MyStorage"), { 
-        name: name,
-        image: imageName,
-        category: category,
-        subCategory: subCategory,
-        expiryDate: expiryDate,
-        storageDate: storageDate,
-        timestamp: serverTimestamp(),
-        quantity: quantity
-      })  
+      try {
+        await addDoc(collection(db, "MyStorage"), {
+          name: name,
+          image: imageName,
+          category: category,
+          subCategory: subCategory,
+          expiryDate: expiryDate,
+          storageDate: storageDate,
+          timestamp: serverTimestamp(),
+          quantity: quantity
+        })
 
-      setStorageRender(true)
-
-    } catch (error){
-      console.log(error)
-    }
+      } catch (error) {
+        console.log(error)
+      }
     }
     e.target.reset();
     setQuantity(0);
   }
+
+  // snapshot to get realtime data from database
+  useEffect(() => {
+    const unsub = onSnapshot(
+      collection(db, "MyStorage"),
+      (snapShot) => {
+        let storageItems = [];
+        snapShot.docs.forEach((doc) => {
+          storageItems.push({ id: doc.id, ...doc.data() });
+        });
+        setStorageData(storageItems);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    return () => {
+      unsub();
+    };
+  }, []);
 
   // function to increase and decrease the quantity
   const increment = () => {
@@ -104,103 +124,108 @@ export default function MyStorage() {
   const decrement = () => {
     setQuantity(function (prevCount) {
       if (prevCount > 0) {
-        return (prevCount -= 1); 
+        return (prevCount -= 1);
       } else {
         return (prevCount = 0);
       }
     });
   }
-  
+
   return (
     <section className="storage">
-      
-        <div className="storage__user-wrapper">
-          <p className="storage__user">
-            <span className="storage__user-uppercase">Welcome! </span>
-             {currentUser && currentUser.email}</p>
-          <span onClick={handleLogout} className="storage__user-cta">
+      {/* <div className="storage__user-wrapper">
+        <p className="storage__user">
+          <span className="storage__user-uppercase">Welcome! </span>
+          {currentUser && currentUser.email}</p>
+        <span onClick={handleLogout} className="storage__user-cta">
           Log Out
-          </span>
-        </div>
-        <h2 className="storage__title">Add new item</h2>
+        </span>
+      </div> */}
       <div className="storage__container">
+      <h3 className="storage__title">Add new item</h3>
         {errorMessage && <p>Please fill out all the fields!!</p>}
         <form className="storage__form" onSubmit={handleAddSubmit}>
           <div className="storage__icon-wrapper">
             <label htmlFor="file-input" className="storage__input-label">
-            {/* <img className="storage__icon" 
+              {/* <img className="storage__icon" 
               src={imageIcon}
               alt="upload icon" /> */}
             </label>
-              <input type="file"
-                className="storage__input-file" 
-                accept="image/x-png, image/jpeg"
-                id="file-input"
-                onChange={(event) => {
-                handleImageSubmit(event)}}/>
+            <input type="file"
+              className="storage__input-file"
+              accept="image/x-png, image/jpeg"
+              id="file-input"
+              onChange={(event) => {
+                handleImageSubmit(event)
+              }} />
           </div>
           <div className="storage__input-wrapper">
-            <input className="storage__input"type="text" name="name"
-              placeholder="Item Name" onChange={(e) => setName(e.target.value)}/>
+            <input className="storage__input" type="text" name="name"
+              placeholder="Item Name" onChange={(e) => setName(e.target.value)} />
           </div>
           <QuantityPicker
             className="storage__qty-picker"
             increment={increment} decrement={decrement}
-            quantity={quantity}/>
+            quantity={quantity} />
 
           <div className="storage__option-wrapper">
             <h4 className="storage__option-label">Storing Location</h4>
             <select className="storage__option-select" name="category"
               onChange={(e) => setCategory(e.target.value)}>
               <option className="storage__option"
-               defaultValue> -- Select an option -- </option>
+                defaultValue> -- Select an option -- </option>
               <option className="storage__option"
-               value="fridge">Fridge</option>
+                value="fridge">Fridge</option>
               <option className="storage__option"
-               value="pantry">Pantry</option>
+                value="pantry">Pantry</option>
               <option className="storage__option"
-               value="freezer">Freezer</option>
+                value="freezer">Freezer</option>
             </select>
           </div>
           <div className="storage__option-wrapper">
-          <h4 className="storage__option-label">Category</h4>
-          <select className="storage__option-select" name="category"
+            <h4 className="storage__option-label">Category</h4>
+            <select className="storage__option-select" name="category"
               onChange={(e) => setSubCategory(e.target.value)}>
               <option className="storage__option"
-               defaultValue> -- Select an option -- </option>
+                defaultValue> -- Select an option -- </option>
               <option className="storage__option"
-               value="Fruits">Fruits</option>
+                value="Fruits">Fruits</option>
               <option className="storage__option"
-               value="Vegetables">Vegetables</option>
+                value="Vegetables">Vegetables</option>
               <option className="storage__option"
-               value="Proteins">Proteins</option>
+                value="Proteins">Proteins</option>
               <option className="storage__option"
-               value="Dairy">Dairy & Eggs</option>
+                value="Dairy">Dairy & Eggs</option>
               <option className="storage__option"
-               value="Pantry">Pantry Staples</option>
+                value="Pantry">Pantry Staples</option>
               <option className="storage__option"
-               value="Spices">Oils, Condiments & Spices</option>
+                value="Spices">Oils, Condiments & Spices</option>
               <option className="storage__option"
-               value="Vegan">Vegan Proteins</option>
+                value="Vegan">Vegan Proteins</option>
             </select>
           </div>
           <div className="storage__date-wrapper">
             <h4 className="storage__date-label">Storage Date</h4>
             <input className="storage__date" type="date"
-            onChange={(e) => setStorageDate(e.target.value)}/>
+              onChange={(e) => setStorageDate(e.target.value)} />
           </div>
           <div className="storage__date-wrapper">
             <h4 className="storage__date-label">Expiration Date</h4>
             <input className="storage__date" type="date"
-             onChange={(e) => setExpiryDate(e.target.value)}/>
+              onChange={(e) => setExpiryDate(e.target.value)} />
           </div>
           <div className="storage__cta-wrapper">
-            <Link  to="/"className="storage__cta">Cancel</Link>
+            <Link to="/" className="storage__cta">Cancel</Link>
             <button className="storage__cta" type="submit">Add</button>
           </div>
         </form>
       </div>
-      <MyStorageDetails />
+      <div className="storage__aside-component">
+        <h2 className="storage__aside-heading">Storage Items</h2>
+        {storageData.map((item) => {
+          return <MyStorageDetails key={item.id} item={item} />
+        })}
+      </div>
     </section>
   );
 };

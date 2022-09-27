@@ -6,7 +6,10 @@
     padding: 1rem;
 
     @include tablet{
-        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+        border-top: 1px solid rgba(92, 102, 126, 0.5)
     }
 
     @include desktop{
@@ -20,14 +23,18 @@
         box-shadow: 0rem .125rem .3125rem rgba(19, 24, 44, 0.4);
         border-radius: 4px;
         padding: 1rem;
-        max-width: 280px;
+        max-width: 250px;
 
         @include tablet{
-            
+            margin: 2rem 1rem 2rem 2rem 
         }
 
         @include desktop{
         }
+    }
+
+    &__title{
+        margin-bottom: 1rem;
     }
 
     &__icon-wrapper{
@@ -124,6 +131,26 @@
             background-color: $color-interactive-elements;
             color: $color-primary-background;
             cursor: pointer;
+        }
+    }
+
+    &__aside-component{
+        margin-top: 2rem;
+
+        @include tablet{
+            margin-top: 0;
+            width: 100%;
+            margin-left: 1rem;
+            padding: 0 2rem;
+            border-left: 1px solid rgba(92, 102, 126, 0.5);
+        }
+    }
+
+    &__aside-heading{
+
+        @include tablet{
+            margin-top: .7rem;
+            font-size: 1.5rem;
         }
     }
     }

@@ -1,46 +1,40 @@
 import "./MyStorageDetails.scss";
-import { myStorage } from "../../Utils/Utils";
-import { useEffect, useState } from "react";
-// import { Link, useParams } from "react-router-dom";
-import { deleteDoc, doc } from "firebase/firestore";
+import { useState } from "react";
+import { deleteDoc, doc, } from "firebase/firestore";
 import { db } from "../../firebase.config";
 import editIcon from "../../styles/assets/icons/icons8-edit-24.png";
 import deleteIcon from "../../styles/assets/icons/icons8-delete-30.png";
 import TrackBar from "../TrackBar/TrackBar";
 import ExpiryTrackDate from "../ExpiryTrackDate/ExpiryTrackDate";
 
-export default function MyStorageDetails() {
-  const [storageData, setStorageData] = useState([]);
-
-  // useEffect to get the data from database
-  useEffect(() => {
-    myStorage().then((response) => setStorageData(response));
-  }, []);
+export default function MyStorageDetails({item}) {
+  const [storageDelete, setStorageDelete] = useState(item)
 
   // handle delete function to delete item
   const handleDelete = async (id) => {
     try {
       await deleteDoc(doc(db, "MyStorage", id));
-      setStorageData(storageData.filter((item) => item.id !== id));
+      setStorageDelete(storageDelete.filter((item) => item.id !== id));
     } catch (err) {
       console.log(err);
     }
   };
 
 
-  if (!storageData) {
-    return <p>You have no item in the storage</p>;
+  if(!item) {
+    return (
+      <section className='storage-item'>
+        <div className='storage-item__failed'>
+          <h1>Failed to load storage items</h1>
+        </div>
+      </section>
+    )
   }
-  console.log(storageData)
 
   return (
     <>
       <div className="details">
-        <h2 className="details__heading">Storage Items</h2>
-        {storageData.map((item) => {
-          return (
-            <div key={item.id} className="details__container dropdown">
-              {" "}
+            <div className="details__container dropdown">
               <div className="details__title-wrapper">
                 <h3 className="details__food-title">{item.name}</h3>
               </div>
@@ -89,9 +83,7 @@ export default function MyStorageDetails() {
                 </div>
               </div>
             </div>
-          );
-        })}
       </div>
-    </>
+      </>
   );
 }

@@ -3,11 +3,7 @@
 @use "../../styles/partials/mixins" as *;
 
 .details{
-    margin-top: 2rem;
-
-    &__title-wrapper{
-        margin-bottom: 0.5rem;
-    }
+    margin-top: 1rem;
 
     &__container{
         padding: 1rem 0;
@@ -16,6 +12,16 @@
         flex-direction: column;
         border-bottom: 1px solid rgba($color-divider, 0.3);
         border-top: 1px solid rgba($color-divider, 0.3);
+
+        @include tablet{
+            border: 1px solid rgba($color-divider, 0.5);
+            box-shadow: 0.1rem 0.1rem .1rem rgba(19, 24, 44, 0.4);
+            border-radius: 4px;
+        }
+    }
+
+    &__title-wrapper{
+        margin-bottom: 0.5rem;
     }
 
     &__img-trackBar-wrapper{
