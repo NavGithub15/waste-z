@@ -34,10 +34,25 @@ export default function TrackBar({ storageDate, expiryDate }) {
       setColor("#158463")
     } else if (progress <= 75) {
       setColor("#FD9345")
-    } else {
+    } else if (progress <= 100) {
+      setColor("#FD9345")
+    }else {
       return setColor("#CF5C5C")
     }
   },[color])
+
+  // if (progress <= 25) {
+  //   setDateText("Expiration Date")
+  // } else if (progress <= 50) {
+  //   setDateText("Expiring on")
+  // } else if (progress <= 75) {
+  //   setDateText("Expiring on")
+  // } else if (progress <= 100) {
+  //   setDateText("Expiring soon")
+  // } else{
+  //   setDateText("Expired")
+  //   return setColor("#CF5C5C")
+  // }
 
 
   const progressStyles = {

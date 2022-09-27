@@ -1,31 +1,39 @@
 import "./BrowseRecipe.scss";
 import { useState, useEffect } from "react";
 import RecipeCards from "../../components/RecipeCards/RecipeCards";
+import axios from "axios";
 // const API_KEY = process.env.REACT_APP_API_KEY;
-const API_KEY = "d2a4954eafec41c7ad5d79cb64631897";
+const API_KEY = "d78c1f52952942dbb33dc88259181dad";
 
 export default function BrowseRecipe() {
   const [recipeValue, setRecipeValue] = useState([]);
+  // const [recipeArrays,setRecipeArrays]=useState([])
+  // const [searchText,setSearchText]=useState("")
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setRecipeValue(e.target.value);
+    e.preventDefault()
+    // getSearchData();
+    axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${e.target.search.value}&number=10&apiKey=${API_KEY}`)
+    
+    .then((response) => {
+      setRecipeValue(response.data.results)
+      console.log(response.data.results)
+ 
+    })
+    .catch(() => {
+      console.log("error")
+    })
   }
 
-  function getSearchData() {
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${recipeValue}&apiKey=${API_KEY}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setRecipeValue(data)
-      })
-      .catch(() => {
-        console.log("error")
-      })
-  }
-  useEffect(() => {
-    getSearchData();
+// const handleChange = (event) =>{
+// setSearchText(event.target.value)
+// }
 
-  }, [])
+ 
+
+// if(!recipeValue){
+//   return <h2>loading.....</h2>
+// } 
 
   return (
     <section className="recipe">
@@ -38,11 +46,12 @@ export default function BrowseRecipe() {
               <input
                 className="recipe__input"
                 name="search"
-                onChange={handleSubmit}
-                placeholder="Type to search..." />
+                // onChange={(event)=>handleChange(event)}}
+                placeholder="Type to search..." 
+                />
             </div>
             <div className="recipe__cta-wrapper">
-              <button onClick={getSearchData} className="recipe__cta" type="submit">
+              <button className="recipe__cta" type="submit">
                 Search
               </button>
             </div>
@@ -50,9 +59,9 @@ export default function BrowseRecipe() {
         </div>
 
       </div>
-      {/* {recipeValue.map((recipe) => {
-        <RecipeCards recipe={recipe} key={recipe.id} />
-      }) } */}
+      {recipeValue && recipeValue.map((recipe) => {
+       return <RecipeCards recipe={recipe} key={recipe.id} />
+      }) }
     </section>
   );
 }

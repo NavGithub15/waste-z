@@ -92,10 +92,11 @@
     &__date-wrapper{
         margin-bottom: 1rem;
         display: flex;
-        flex-direction: column
+        flex-direction: column;
     }
-
+    
     &__date{
+        font-family: inherit;
         @extend .storage__option-select;
 
     }

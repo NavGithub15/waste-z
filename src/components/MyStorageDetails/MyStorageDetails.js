@@ -23,6 +23,7 @@ export default function MyStorageDetails({ item }) {
   };
 
 
+
   if (!item) {
     return (
       <section className='storage-item'>
@@ -55,7 +56,9 @@ export default function MyStorageDetails({ item }) {
               </div>
               <ExpiryTrackDate storageDate={item.storageDate} expiryDate={item.expiryDate} />
               <div className="food__icon-wrapper">
-                <img className="food__icon" src={editIcon} alt="edit" />
+                <img className="food__icon"
+                 src={editIcon} alt="edit"
+                 />
                 <img
                   className="food__icon"
                   src={deleteIcon}

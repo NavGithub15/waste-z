@@ -13,42 +13,36 @@ import MyStorageDetails from "../../components/MyStorageDetails/MyStorageDetails
 
 export default function MyStorage() {
 
-  let date = new Date(Date.now());
+  function initializeDate() {
+    const today = new Date();
+
+    const year = String(today.getFullYear());
+    let month = String(today.getMonth() + 1);
+    let day = String(today.getDate());
+
+    if (month.length === 1) {
+      month = "0" + month;
+    }
+
+    if (day.length === 1) {
+      day = "0" + day;
+    }
+
+    return `${year}-${month}-${day}`;
+  }
 
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [subCategory, setSubCategory] = useState("");
-  const [storageDate, setStorageDate] = useState(date);
-  const [expiryDate, setExpiryDate] = useState(date);
-  const [quantity, setQuantity] = useState(0)
-  const [imageUpload, setImageUpload] = useState([])
+  const [storageDate, setStorageDate] = useState(initializeDate());
+  const [expiryDate, setExpiryDate] = useState(initializeDate());
+  const [quantity, setQuantity] = useState(0);
+  const [imageUpload, setImageUpload] = useState([]);
   const [imageName, setImageName] = useState([]);
-  const [errorMessage, setErrorMessage] = useState(false)
+  const [errorMessage, setErrorMessage] = useState(false);
   const [storageData, setStorageData] = useState([]);
-
-
-  // handle image submit
-  const handleImageSubmit = (event) => {
-    setImageUpload(event.target.files[0]);
-  };
-
-  useEffect(() => {
-    uploadImage();
-  }, [imageUpload])
-
-  // function to upload image to database
-  const uploadImage = () => {
-    const imageName = new Date().getTime() + imageUpload.name + v4()
-    const imageRef = ref(storage, imageName);
-    uploadBytes(imageRef, imageUpload).then(() => {
-      getImageLink(imageRef)
-    })
-  };
-  const getImageLink = (imageRef) => {
-    getDownloadURL(imageRef).then((url) => {
-      setImageName(url);
-    });
-  };
+  const [storageEdit, setStorageEdit] = useState(false)
+  const [itemUuid, setItemUuid] = useState("");
 
   // Handle submit to add food item to database
   const handleAddSubmit = async (e) => {
@@ -78,7 +72,31 @@ export default function MyStorage() {
     setQuantity(0);
   }
 
-  // snapshot to get realtime data from database
+  // handle image submit
+  const handleImageSubmit = (event) => {
+    setImageUpload(event.target.files[0]);
+  };
+
+  useEffect(() => {
+    uploadImage();
+  }, [imageUpload])
+
+  // function to upload image to database
+  const uploadImage = () => {
+    const imageName = new Date().getTime() + imageUpload.name + v4()
+    const imageRef = ref(storage, imageName);
+    uploadBytes(imageRef, imageUpload).then(() => {
+      getImageLink(imageRef)
+    })
+  };
+  const getImageLink = (imageRef) => {
+    getDownloadURL(imageRef).then((url) => {
+      setImageName(url);
+    });
+  };
+
+
+  // snapshot method to get realtime data from database
   useEffect(() => {
     const unsub = onSnapshot(
       collection(db, "MyStorage"),
@@ -98,6 +116,18 @@ export default function MyStorage() {
       unsub();
     };
   }, []);
+
+  // const handleUpdate = (todo) => {
+  //   setStorageEdit(true);
+
+  // };
+
+  // const handleSubmitChange = (id) => {
+  //   update(ref(db, "MyStorage", id), {
+  //     expiryDate: expiryDate,
+  //     quantity: quantity
+  //   });
+  // };
 
   // function to increase and decrease the quantity
   const increment = () => {
@@ -119,7 +149,7 @@ export default function MyStorage() {
   return (
     <section className="storage">
       <div className="storage__container">
-      <h3 className="storage__title">Add new item</h3>
+        <h3 className="storage__title">Add new item</h3>
         {errorMessage && <p>Please fill out all the fields!!</p>}
         <form className="storage__form" onSubmit={handleAddSubmit}>
           <div className="storage__icon-wrapper">
@@ -184,12 +214,18 @@ export default function MyStorage() {
           <div className="storage__date-wrapper">
             <h4 className="storage__date-label">Storage Date</h4>
             <input className="storage__date" type="date"
-              onChange={(e) => setStorageDate(e.target.value)} />
+              defaultValue={storageDate}
+              min={initializeDate()}
+              onChange={(e) => setStorageDate(e.target.value)}
+            />
           </div>
           <div className="storage__date-wrapper">
             <h4 className="storage__date-label">Expiration Date</h4>
             <input className="storage__date" type="date"
-              onChange={(e) => setExpiryDate(e.target.value)} />
+              defaultValue={expiryDate}
+              min={initializeDate()}
+              onChange={(e) => setExpiryDate(e.target.value)}
+            />
           </div>
           <div className="storage__cta-wrapper">
             <Link to="/" className="storage__cta">Cancel</Link>

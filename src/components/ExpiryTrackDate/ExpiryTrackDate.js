@@ -32,12 +32,15 @@ export default function ExpiryTrackDate({ storageDate, expiryDate }) {
     useEffect(() => {
       if (progress <= 25) {
         setDateText("Expiration Date")
+      } else if (progress <= 50) {
+        setDateText("Expiring on")
       } else if (progress <= 75) {
         setDateText("Expiring on")
+      } else if (progress <= 100) {
+        setDateText("Expiring soon")
       } else{
         setDateText("Expired")
         return setColor("#CF5C5C")
-        
       }
       
     },[progress,color])
