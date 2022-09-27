@@ -54,7 +54,8 @@ import { collection, getDocs } from "firebase/firestore";
   })}
 
   export const myStorage = () => {
-    return getDocs(myStorageDb)  
+    return getDocs(myStorageDb)
+    // .orderBy("timestamp", "asc")  
     .then((data) => {
       return (data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   })}

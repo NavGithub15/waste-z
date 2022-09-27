@@ -4,23 +4,22 @@ export default function Footer() {
     return (
         <footer className="footer">
             <div className="footer__wrapper">
-                <div className="footer__about">
-                    <h3 className="footer__heading">About</h3>
-                    <p className="footer__text">WASTE Z is an simple initiative with a bigger scope to help reduce the food waste.
-                        Our team is actively developing programming skills and we will bring new updates soon.
-                    </p>
+                <div className="footer__about-lists">
+                    <h3>About</h3>
+                    <h3>Contact</h3>
+                    <h3>Phone</h3>
                 </div>
                 <div className="footer__lists">
-                    <h3>Privacy</h3>
-                    <h3>Resources</h3>
                     <h3>Developers</h3>
+                    <h3>Resources</h3>
+                    <h3>Privacy</h3>
                 </div>
                 <div className="footer__icons">
-                    <FaGithub />
-                    <FaFacebook />
-                    <FaTwitter />
-                    <FaInstagram />
-                    <FaLinkedin />
+                    <FaGithub className="footer__icon" />
+                    <FaFacebook className="footer__icon" />
+                    <FaTwitter className="footer__icon"/>
+                    <FaInstagram className="footer__icon" />
+                    <FaLinkedin className="footer__icon"/>
                 </div>
             </div>
             <div className="footer__copyright">

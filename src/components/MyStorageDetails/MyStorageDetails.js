@@ -31,6 +31,7 @@ export default function MyStorageDetails() {
   if (!storageData) {
     return <p>You have no item in the storage</p>;
   }
+  console.log(storageData)
 
   return (
     <>

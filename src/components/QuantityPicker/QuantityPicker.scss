@@ -18,7 +18,7 @@
             color: $color-primary-background;
             background-color: $color-interactive-elements;
         }
-        &:nth-child(3){
+        &:nth-child(1){
             &:hover{
                 background-color: $color-secondary-cta;
             }
@@ -27,6 +27,7 @@
 
     &__icon{
         width: 1.2rem;
+        height: 1.2rem;
     }
 
     &__number{

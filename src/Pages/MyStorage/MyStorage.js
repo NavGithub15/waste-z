@@ -24,6 +24,7 @@ export default function MyStorage() {
   const [imageUpload, setImageUpload] = useState([])
   const [imageName, setImageName] = useState([]);
   const [errorMessage, setErrorMessage] = useState(false)
+  const [storageRender, setStorageRender] = useState(false)
 
   const { currentUser, logOut, } = useAuth();
 
@@ -81,7 +82,10 @@ export default function MyStorage() {
         storageDate: storageDate,
         timestamp: serverTimestamp(),
         quantity: quantity
-      }) 
+      })  
+
+      setStorageRender(true)
+
     } catch (error){
       console.log(error)
     }

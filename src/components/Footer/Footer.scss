@@ -8,7 +8,47 @@
 
     &__wrapper{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-bottom: 1rem;
     }
 
+    &__about-lists{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    // @include tablet{
+    //     flex-basis: 40%;
+    // }
+    }
+
+    &__lists{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        // @include tablet{
+        //     flex-basis: 50%;
+        // }
+    }
+
+    &__icons{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+        // @include tablet{
+        //     flex-basis: 50%;
+        // }
+    }
+
+    &__icon{
+        margin-top: 0.5rem;
+        margin-bottom: 1rem; 
+    }
+
+    &__copyright{
+        text-align: center;
+    }
 }
