@@ -22,7 +22,7 @@
             align-items: center;
             padding: 2rem;
             margin: 0 auto;
-            max-width: 100rem;
+            max-width: 110rem;
         }
     }
 
@@ -54,8 +54,10 @@
         cursor: pointer;
         text-transform: uppercase;
         z-index: 9;
+        transition: 50ms ease-out;
         &:hover{
             text-shadow: .8rem .8rem .1rem rgba($color-outline, 0.4);
+            transform: scale(1.1);
         }
 
         @include tablet{
@@ -71,8 +73,10 @@
         color: $color-global-text;
         margin: 0;
         cursor: pointer;
+        transition: 50ms ease-out;
         &:hover{
             color: $color-interactive-elements;
+            transform: scale(1.1);
         }
         
         @include tablet{

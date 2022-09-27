@@ -3,15 +3,56 @@
 @use "../../styles/partials/mixins" as *;
 
 .recipe{
-    padding: 1rem;
+    
+    &__overlay{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: black, $alpha: 0.3);
+        z-index: 0;
+    }
 
     &__container{
-        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content:center ;
+        align-items: center;
+        position: relative;
+        background-image: url(../../styles/assets/images/dishprep.jpg);
+        height: 50vw;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+        @include tablet{
+            height: 40vw;
+        }
+    }
+
+    &__search-wrapper{
+        z-index: 1;
+        width: 100%;
+        padding: 1rem 2rem;
+        max-width: 450px;
+        margin: 0 auto;
+
+        @include tablet{
+            border: 5px solid $color-primary-background;
+        }
+    }
+
+    &__heading{
+        text-align: center;
+        color: $color-primary-background;
+        z-index: 1;
+        margin: 1rem 0;
     }
 
     &__search-form{
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
+        align-items: center;
         width: 100%;
 
         @include tablet{
@@ -20,7 +61,7 @@
 
     &__input-wrapper{
         width: 100%;
-        margin-right: 1rem;
+        margin-bottom: 1rem;
     }
 
     &__input{
@@ -39,6 +80,8 @@
     }
 
     &__cta-wrapper{
+        position: relative;
+        z-index: 1;
 
         @include tablet{
             display: flex;
@@ -50,17 +93,16 @@
     }
 
     &__cta{
-        width: 4rem;
+        width: 6rem;
         height: 2.5rem;
         font-weight: 600;
-        background-color: rgba($color-cta-background, 0.6);
-        color: $color-global-text;
+        background-color: rgba($color-cta-background, .8);
+        color: $color-primary-background;
         border: none;
         border-radius: 6px;
         cursor: pointer;
         &:hover{
-            background-color: $color-interactive-elements;
-            color: $color-primary-background;
+            background-color: rgba($color-interactive-elements, 0.8);
         }
         @include tablet{
             width: 8rem;

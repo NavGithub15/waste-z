@@ -12,7 +12,11 @@
     @include tablet{
         padding: 2rem;
         align-items: flex-start;
-        max-width: 80rem;
+    }
+
+    @include desktop{
+        padding: 6rem;
+        max-width: 120rem;
         margin: 0 auto;
     }
 
@@ -31,7 +35,10 @@
         @include tablet{
             flex-direction: row;
             justify-content: space-between;
+            max-width: 120rem;
+            margin: 0 auto;
         }
+
     }
 
     &__context-wrapper{
@@ -74,6 +81,10 @@
 
         @include tablet{
             width: 20rem;
+        }
+
+        @include desktop{
+            width: 25rem;
         }
     }
 }
