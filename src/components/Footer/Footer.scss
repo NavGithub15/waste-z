@@ -17,20 +17,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    // @include tablet{
-    //     flex-basis: 40%;
-    // }
     }
 
     &__lists{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
-        // @include tablet{
-        //     flex-basis: 50%;
-        // }
     }
 
     &__icons{
@@ -38,9 +30,6 @@
         justify-content: space-between;
         flex-direction: column;
 
-        // @include tablet{
-        //     flex-basis: 50%;
-        // }
     }
 
     &__icon{
@@ -49,6 +38,7 @@
     }
 
     &__copyright{
+        margin-left: 3rem;
         text-align: center;
     }
 }
