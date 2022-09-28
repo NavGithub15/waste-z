@@ -98,12 +98,13 @@ export default function MyStorage() {
     const unsub = onSnapshot(
       collection(db, "MyStorage"),
       (snapShot) => {
-        let storageItems = [];
-        snapShot.docs.forEach((doc) => {
+        let storageItems = snapShot.docs.map((doc) => {
           storageItems.push({ id: doc.id, ...doc.data() });
         });
+
         setStorageData(storageItems);
       },
+      
       (error) => {
         console.log(error);
       }
@@ -112,6 +113,7 @@ export default function MyStorage() {
     return () => {
       unsub();
     };
+
   }, []);
 
   // function to increase and decrease the quantity

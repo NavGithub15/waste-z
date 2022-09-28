@@ -3,16 +3,62 @@
 @use "../../styles/partials/mixins" as *;
 
 .footer{
-
-    @include desktop{
-        max-width: 120rem;
-        margin: 0 auto;
-
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 1rem;
     background-color: rgba($color-quaternary-background, 0.6);
 
+    @include tablet{
+        padding: 2rem;
+    }
+    @include desktop{
+        max-width: 120rem;
+        margin: 0 auto;
+    }
+
+    &__container{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width:600px;
+        margin: 0 auto;
+    }
+
+    &__text-wrapper{
+        display: flex;
+        justify-content: space-between;
+        
+        @include desktop{
+            padding: 0 5rem;
+        }
+    }
+
+    &__text{
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin: 1rem 0;
+        margin-left: .5rem;
+
+        @include tablet{
+            font-size: 1.5625rem;
+        }
+
+    }
+
+    &__icon-wrapper{
+        display: flex;
+        justify-content: space-around;
+        margin: 1rem 0 1rem .5rem;
+
+        @include tablet {
+            padding: 0 8rem;
+        }
+
+    }
+
     &__copyright{
         text-align: center;
+        margin: 1rem;
     }
 }

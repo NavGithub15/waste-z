@@ -25,10 +25,9 @@ export default function RecipeCards({ recipe }) {
     }
     console.log(handleClick())
 
-    if (details.length === 0) {
-        return <h2>Loading...........</h2>;
-    }
-
+    if (recipe.length === 0) {
+        return <h2>loading.....</h2>;
+      }
     
 
     return (

@@ -20,11 +20,9 @@ export default function BrowseRecipe() {
       })
   }
 
-
   if (!recipeValue) {
     return <h2>loading.....</h2>
   }
-
   return (
     <section className="recipe">
       <div className="recipe__container">
