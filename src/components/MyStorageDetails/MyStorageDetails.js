@@ -52,7 +52,7 @@ export default function MyStorageDetails({ item }) {
     if (progress > 100) {
       setTimeout(() => {notifyExpires()}, 5000)
     } else 
-    return null
+    return 
   },[progress])
 
 
