@@ -20,7 +20,7 @@ Future Updates:
 
 
 Tech Stack:
-React, SASS, Flexbox, Firebase, Git & Github
+- React, SASS, Flexbox, Firebase, Git & Github
 
 Setup:
 - Clone this repository. git@github.com:NavGithub15/waste-z.git
