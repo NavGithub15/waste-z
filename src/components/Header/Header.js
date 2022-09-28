@@ -44,7 +44,7 @@ export default function Header() {
             (<NavLink to="/myStorage" className="header__link">My Storage</NavLink>
             )}
           {!currentUser ? (<NavLink className="header__link" to="/signUp">Get Started</NavLink>) :
-            (<NavLink to="/recipe" className="header__link">Recipes</NavLink>
+            (<NavLink to="/browseRecipe" className="header__link">Recipes</NavLink>
             )}
           <NavLink to="/donate" className="header__link">Donate</NavLink>
         </nav>

@@ -3,21 +3,40 @@
 @use "../../styles/partials/mixins" as *;
 
 .storage{
-    padding: 1rem;
     background-color: rgba($color-hamburger-background, 0.1);
 
     @include tablet{
         display: flex;
         justify-content: space-between;
-        padding: 0;
+        margin-top: 1rem;
         border-top: 1px solid rgba(92, 102, 126, 0.5)
     }
 
     @include desktop{
-        
+        max-width: 120rem;
+        margin: 0 auto;
     } 
 
     &__container{
+        padding: 1rem;
+
+        @include desktop{
+            padding: 0;
+            margin-left: 5rem;
+        }
+    }
+
+    &__title{
+        margin-bottom: 1rem;
+
+        @include tablet{
+            margin-top: 1rem;
+            margin-left: 2rem;
+            font-size: 1.5rem;
+        }
+    }
+
+    &__form{
         display: flex;
         flex-direction: column;
         background-color: $color-primary-background;
@@ -25,18 +44,12 @@
         box-shadow: .3rem .3rem .3rem rgba(19, 24, 44, 0.4);
         border-radius: 4px;
         padding: 1rem;
-        max-width: 250px;
+        max-width: 25rem;
 
         @include tablet{
-            margin: 2rem 1rem 2rem 2rem 
+            margin: 1rem 1rem 2rem 2rem ;
+            max-width: 15rem;
         }
-
-        @include desktop{
-        }
-    }
-
-    &__title{
-        margin-bottom: 1rem;
     }
 
     &__icon-wrapper{
@@ -138,7 +151,8 @@
     }
 
     &__aside-component{
-        margin-top: 2rem;
+        margin-top: 1rem;
+        padding: 0rem 1rem ;
 
         @include tablet{
             margin-top: 0;
@@ -152,7 +166,7 @@
     &__aside-heading{
 
         @include tablet{
-            margin-top: .7rem;
+            margin-top: 1rem;
             font-size: 1.5rem;
         }
     }

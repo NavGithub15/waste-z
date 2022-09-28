@@ -6,7 +6,6 @@ import "./SignInForm.scss";
 export default function SignInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const navigate = useNavigate();
   const { logIn } = useAuth();
@@ -15,7 +14,6 @@ export default function SignInForm() {
     e.preventDefault();
 
     if (email === "" || password === "") {
-      setError(true);
       return setErrorMessage("Please fill out the empty fields!!!");
     };
     try {
@@ -25,7 +23,7 @@ export default function SignInForm() {
         navigate('/myStorage')
       }, 1000)
     } catch (e) {
-      setError(true)
+      console.log(e, "error")
     }
   };
 

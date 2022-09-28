@@ -10,11 +10,10 @@ import QuantityPicker from '../../components/QuantityPicker/QuantityPicker';
 import MyStorageDetails from "../../components/MyStorageDetails/MyStorageDetails";
 // import imageIcon from "../../styles/assets/icons/Circle-icons-image.svg.png";
 
-
 export default function MyStorage() {
 
   function initializeDate() {
-    const today = new Date();
+    const today = new Date(Date.now());
 
     const year = String(today.getFullYear());
     let month = String(today.getMonth() + 1);
@@ -35,14 +34,12 @@ export default function MyStorage() {
   const [category, setCategory] = useState("");
   const [subCategory, setSubCategory] = useState("");
   const [storageDate, setStorageDate] = useState(initializeDate());
-  const [expiryDate, setExpiryDate] = useState(initializeDate());
+  const [expiryDate, setExpiryDate] = useState(null);
   const [quantity, setQuantity] = useState(0);
   const [imageUpload, setImageUpload] = useState([]);
   const [imageName, setImageName] = useState([]);
   const [errorMessage, setErrorMessage] = useState(false);
   const [storageData, setStorageData] = useState([]);
-  const [storageEdit, setStorageEdit] = useState(false)
-  const [itemUuid, setItemUuid] = useState("");
 
   // Handle submit to add food item to database
   const handleAddSubmit = async (e) => {
@@ -117,18 +114,6 @@ export default function MyStorage() {
     };
   }, []);
 
-  // const handleUpdate = (todo) => {
-  //   setStorageEdit(true);
-
-  // };
-
-  // const handleSubmitChange = (id) => {
-  //   update(ref(db, "MyStorage", id), {
-  //     expiryDate: expiryDate,
-  //     quantity: quantity
-  //   });
-  // };
-
   // function to increase and decrease the quantity
   const increment = () => {
     setQuantity(function (prevCount) {
@@ -149,7 +134,7 @@ export default function MyStorage() {
   return (
     <section className="storage">
       <div className="storage__container">
-        <h3 className="storage__title">Add new item</h3>
+        <h2 className="storage__title">Add new item</h2>
         {errorMessage && <p>Please fill out all the fields!!</p>}
         <form className="storage__form" onSubmit={handleAddSubmit}>
           <div className="storage__icon-wrapper">
@@ -222,7 +207,6 @@ export default function MyStorage() {
           <div className="storage__date-wrapper">
             <h4 className="storage__date-label">Expiration Date</h4>
             <input className="storage__date" type="date"
-              defaultValue={expiryDate}
               min={initializeDate()}
               onChange={(e) => setExpiryDate(e.target.value)}
             />

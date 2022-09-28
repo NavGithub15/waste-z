@@ -1,0 +1,64 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+
+.results{
+    display: flex;
+    flex-direction: column;
+    border: 0px solid $color-divider;
+    box-shadow: 0.3rem .3rem .5rem .35rem rgba($color-interactive-elements, 0.3);
+    border-radius: 4px;
+    margin: 1rem;
+    max-width: 18rem;
+    margin-left: auto;
+    padding: 1rem;
+    cursor: pointer;
+    transition:linear;
+    &:hover{
+        transform:scale(1.04);
+        outline: 5px solid rgba($color-outline, 0.3);
+        border: 1px solid rgba($color-outline, 0.3);
+    }
+
+    @include tablet{
+        justify-content: space-between;
+        margin-left: 0;
+        flex: 0 0 auto;
+        overflow: hidden;
+
+
+    }
+
+    &__title{
+        margin-bottom: 1rem;
+
+    }
+
+    &__image{
+        width: 14.375rem;
+    }
+
+    &__info-wrapper{
+        margin: 1rem 0;
+    }
+
+    &__info{
+        position: relative;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        width: 100%;
+    }
+
+    &__link{
+        text-transform: uppercase;
+        font-weight: 600;
+        color: $color-interactive-elements;
+        padding: 1rem 0.5rem 0.5rem;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}

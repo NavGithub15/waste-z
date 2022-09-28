@@ -48,7 +48,7 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: rgba($color-quaternary-background, $alpha: 0.1);
+        background-color: rgba($color-divider, $alpha: 0.1);
     }
 
     &__card-image{
@@ -67,7 +67,6 @@
 
     &__text-wrapper{
         position: absolute;
-        z-index: 1;
         bottom: 1rem;
         color: $color-global-text;
         display: flex;

@@ -3,42 +3,16 @@
 @use "../../styles/partials/mixins" as *;
 
 .footer{
+
+    @include desktop{
+        max-width: 120rem;
+        margin: 0 auto;
+
+    }
     padding: 1rem;
     background-color: rgba($color-quaternary-background, 0.6);
 
-    &__wrapper{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        margin-bottom: 1rem;
-    }
-
-    &__about-lists{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    }
-
-    &__lists{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    &__icons{
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-
-    }
-
-    &__icon{
-        margin-top: 0.5rem;
-        margin-bottom: 1rem; 
-    }
-
     &__copyright{
-        margin-left: 3rem;
         text-align: center;
     }
 }

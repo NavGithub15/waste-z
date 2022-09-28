@@ -2,6 +2,7 @@
 @use "../../styles/partials/fonts" as *;
 @use "../../styles/partials/mixins" as *;
 
+
   .menu__link{
     font-size: 1.625rem;
     font-weight: 600;
@@ -21,7 +22,7 @@
   width: 29px;
   height: 25px;
   left: 22px;
-  top: 24px;
+  top: 45px;
 
   @include tablet{
     display: none;

@@ -6,8 +6,7 @@ function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState(false);
   const navigate = useNavigate();
   const { signUp } = useAuth();
   
@@ -22,7 +21,7 @@ function SignUpForm() {
       await signUp(email, password, confirmPassword);
       navigate("/signIn");
     } catch {
-      setError(true);
+      setErrorMessage(true)
       setErrorMessage("Please fill out the fields!")
     }
   };

@@ -15,12 +15,12 @@
         padding: 1rem 0;
         margin: 1rem 0;
 
-        @include tablet{
-            
+        @include desktop{
+            max-width: 86rem;
         }
     }
 
-    &__title-trackBar-wrapper{
+    &__title-wrapper{
         display: flex;
         margin-bottom: 0.5rem;
         padding: 0 1rem;
@@ -31,9 +31,8 @@
 
     }
 
-    &__img-wrapper{
+    &__aside-wrapper{
         display: flex;
-        align-items: center;
         padding: 0 1rem;
     }
 
@@ -52,57 +51,37 @@
 }
 
 .food{
-
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+
+    @include tablet{
+
+    }
+
+    &__accordion{
+        opacity: 0;
+    }
 
 
     &__content-heading{
         text-transform: uppercase;
     }
 
-    &__qty-wrapper{
-        margin-left: 1rem;
-    }
-
-    &__icon-wrapper{
-        display: flex;
-        justify-content: space-between;
-        margin-top: 1rem;
-        margin-left: 1rem;
-    }
-
     &__icon{
-        margin-left: 1rem;
         width: 1.5rem;
         height: 1.6rem;
         cursor: pointer;
     }
 
-}
-
-
-.food__accordion-wrapper{
-    display: flex;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-
-
-&__accordion{
-    width: 500px;
-    // position: absolute;
-    // left: 0;
-    // top: calc(100% + .25rem);
-    // background-color: white;
-    // padding: .75rem;
-    // border-radius: .25rem;
-    // box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
-    // pointer-events: none;
-    // transform: translateY(-10px);
-    // transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
-}
+    &__accordion-content-wrapper{
+        display: flex;
+        flex-direction: row;
+        padding: 0 1rem;
+        justify-content: space-between;
+        align-items: center;
+    }
 
 }

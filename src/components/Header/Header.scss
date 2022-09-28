@@ -6,14 +6,17 @@
 
     &__user-wrapper{
         background-color: rgba($color-quaternary-background, 0.6);
-        padding: 1rem;
+        padding: 0rem 1.2rem;
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
-        max-width: 120rem;
-        margin: 0 auto;
-
+        
         @include tablet{
-
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            max-width: 120rem;
+            margin: 0 auto;
         }
     }
 
@@ -91,7 +94,7 @@
         }
 
         @include small-laptop{
-            margin-right: 8rem;
+            margin-right: 5rem;
         }
     }
 

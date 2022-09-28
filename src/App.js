@@ -10,6 +10,7 @@ import SignInForm from './components/Authentication/SignIn/SignInForm';
 import Storage from './Pages/Storage/Storage';
 import BrowseRecipe from './Pages/BrowseRecipe/BrowseRecipe';
 import Footer from './components/Footer/Footer';
+import Donate from './Pages/Donate/Donate';
 
 export default function App() {
 
@@ -27,7 +28,8 @@ export default function App() {
               <Route path="/signUp" element={<SignUpForm />} />
               <Route path="/signIn" element={<SignInForm />} />
               <Route path="/storage" element={<Storage />} />
-              <Route path="/recipe" element={<BrowseRecipe />} />
+              <Route path="/browseRecipe" element={<BrowseRecipe />} />
+              <Route path="/donate" element={<Donate />} />
           </Routes >
           <Footer />
     </AuthProvider>

@@ -1,35 +1,51 @@
 import "./RecipeCards.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
- // const API_KEY = process.env.REACT_APP_API_KEY;
- const API_KEY = "d2a4954eafec41c7ad5d79cb64631897";
+
+ const API_KEY = process.env.REACT_APP_API_KEY;
 
 export default function RecipeCards({ recipe }) {
-    console.log(recipe)
-    // const [imageUrl, setImageUrl] = useState("")
+    const [details, setDetails] = useState({})
 
-    // useEffect(() => {
-    //     console.log("triggered")
-    //     axios.get (`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=${API_KEY}&includeNutrition=false`)
 
-    //         .then((data) => {
-    //             setImageUrl(data.image);
-    //         })
-    //         .catch(() => {
-    //             console.log('error');
-    //         });
-    // }, [recipe.id]);
+    useEffect(() => {
+        console.log("triggered")
+        axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=${API_KEY}&includeNutrition=false`)
 
-    if (recipe.length === 0) {
+            .then((response) => {
+                setDetails(response.data);
+            })
+            .catch(() => {
+                console.log('error');
+            });
+    }, [details.id]);
+
+    const handleClick = () => {
+        window.location.assign(details.sourceUrl)
+    }
+    console.log(handleClick())
+
+    if (details.length === 0) {
         return <h2>Loading...........</h2>;
-      }
+    }
+
+    
 
     return (
         <>
-            <div className="recipe__card card">
-                {/* <h3>{recipe.name}</h3> */}
-                <img src={recipe.image} alt="food" />
-                {/* <a href={recipe.sourceUrl}>Go to Recipe</a> */}
+            <div className="results" onClick={handleClick}>
+                <div className="results__container">
+                    <h3 className="results__title">{details.title}</h3>
+                </div>
+                <div className="results__image-wrapper">
+                    <img className="results__image" src={details.image} alt="food" />
+                </div>
+                <div className="results__info-wrapper">
+                    <p className="results__info" dangerouslySetInnerHTML={{ __html: details.instructions }}></p>
+                </div>
+                <div className="results__link-wrapper">
+                    <a className="results__link" href={details.sourceUrl} target="_blank" rel="noreferrer noopener">Learn More</a>
+                </div>
             </div>
         </>
     )

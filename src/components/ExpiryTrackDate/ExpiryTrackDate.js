@@ -27,9 +27,7 @@ export default function ExpiryTrackDate({ storageDate, expiryDate }) {
         const progressToSet = Math.floor((startDate/endDate)*100)
       
       setProgress(progressToSet)
-    }, [progress,color]);
-  
-    useEffect(() => {
+
       if (progress <= 25) {
         setDateText("Expiration Date")
       } else if (progress <= 50) {
@@ -42,8 +40,11 @@ export default function ExpiryTrackDate({ storageDate, expiryDate }) {
         setDateText("Expired")
         return setColor("#CF5C5C")
       }
+    }, [progress,color]);
+  
+    // useEffect(() => {
       
-    },[progress,color])
+    // },[progress,color])
 
     const progressStyles = {
         color: `${color}`,
@@ -51,9 +52,9 @@ export default function ExpiryTrackDate({ storageDate, expiryDate }) {
   
     return (
         <>
-            <div className="Expiry-wrapper" style={progressStyles}>
-                <h4 className="food__content-heading" style={progressStyles}>{dateText}</h4>
-                <span className="food__content-text" style={progressStyles}>{expiryDate}</span>
+            <div className="expiry-wrapper" style={progressStyles}>
+                <h4 className="expiry__content-heading" style={progressStyles}>{dateText}</h4>
+                <span className="expiry__content-text" style={progressStyles}>{expiryDate}</span>
             </div>
         </>
     )

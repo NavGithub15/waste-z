@@ -19,6 +19,7 @@
     "fs": "^0.0.1-security",
     "os-browserify": "^0.3.0",
     "react": "^18.2.0",
+    "react-accordion-library": "^1.0.4",
     "react-burger-menu": "^3.0.8",
     "react-collapsible": "^2.10.0",
     "react-dom": "^18.2.0",

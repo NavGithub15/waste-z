@@ -9,7 +9,7 @@ export default function TrackBar({ storageDate, expiryDate }) {
   function epoch(date) {
     return Date.parse(date)
   }
-  // storage timestamp into epoch
+      // storage timestamp into epoch
   const storageTimestamp = epoch(storageDate)
 
   // expiry timestamp into epoch
@@ -22,12 +22,10 @@ export default function TrackBar({ storageDate, expiryDate }) {
   const startDate = todayTimestamp - storageTimestamp;
   const endDate = expiryTimestamp - storageTimestamp;
 
-
   useEffect(() => {
+
     setProgress(Math.floor((startDate / endDate) * 100))
-  }, []);
 
-  useEffect(() => {
     if (progress <= 25) {
       setColor("#158463");
     } else if (progress <= 50) {
@@ -39,20 +37,8 @@ export default function TrackBar({ storageDate, expiryDate }) {
     }else {
       return setColor("#CF5C5C")
     }
-  },[color])
-
-  // if (progress <= 25) {
-  //   setDateText("Expiration Date")
-  // } else if (progress <= 50) {
-  //   setDateText("Expiring on")
-  // } else if (progress <= 75) {
-  //   setDateText("Expiring on")
-  // } else if (progress <= 100) {
-  //   setDateText("Expiring soon")
-  // } else{
-  //   setDateText("Expired")
-  //   return setColor("#CF5C5C")
-  // }
+  },[progress, color])
+  // console.log(progress)
 
 
   const progressStyles = {
