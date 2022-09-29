@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 //  const API_KEY = process.env.REACT_APP_API_KEY;
-const API_KEY = "cfd419724177439aab4f03297d2389f3";
+const API_KEY = "5841b4a82bda4f1d8ca6fa5b23d38462";
 
 export default function RecipeCards({ recipe }) {
     const [details, setDetails] = useState({})
