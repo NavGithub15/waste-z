@@ -117,6 +117,9 @@ export default function MyStorage() {
 
   }, []);
 
+
+  // const storageSortedNewItems = storageData.map
+
   // function to increase and decrease the quantity
   const increment = () => {
     setQuantity(function (prevCount) {
@@ -203,7 +206,7 @@ export default function MyStorage() {
             <h4 className="storage__date-label">Storage Date</h4>
             <input className="storage__date" type="date"
               defaultValue={storageDate}
-              min={initializeDate()}
+              // min={initializeDate()}
               onChange={(e) => setStorageDate(e.target.value)}
             />
           </div>

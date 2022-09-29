@@ -34,7 +34,7 @@ export default function ExpiryTrackDate({ storageDate, expiryDate }) {
         setDateText("Expiring on")
       } else if (progress <= 75) {
         setDateText("Expiring on")
-      } else if (progress <= 100) {
+      } else if (progress <= 80) {
         setDateText("Expiring soon")
       } else{
         setDateText("Expired")

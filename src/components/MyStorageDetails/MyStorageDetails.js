@@ -49,10 +49,10 @@ export default function MyStorageDetails({ item }) {
   useEffect(() => {
     setProgress(Math.floor((startDate / endDate) * 100))
 
-    if (progress > 100) {
+    if (progress === 100) {
       setTimeout(() => {notifyExpires()}, 5000)
     } else 
-    return 
+    return
   },[progress])
 
 

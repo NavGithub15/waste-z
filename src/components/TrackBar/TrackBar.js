@@ -1,9 +1,9 @@
 import "./TrackBar.scss"
-import { useState, useEffect } from "react";
+// import { useState useEffect } from "react";
 
 export default function TrackBar({ storageDate, expiryDate }) {
-  const [progress, setProgress] = useState(0);
-  const [color, setColor] = useState("")
+  // const [progress, setProgress] = useState(0);
+  // const [color, setColor] = useState("")
 
   // function to convert timestamp to epoch
   function epoch(date) {
@@ -22,23 +22,27 @@ export default function TrackBar({ storageDate, expiryDate }) {
   const startDate = todayTimestamp - storageTimestamp;
   const endDate = expiryTimestamp - storageTimestamp;
 
-  useEffect(() => {
+  const progress = (Math.floor((startDate / endDate) * 100))
 
-    setProgress(Math.floor((startDate / endDate) * 100))
+  let color = ("#CF5C5C");
 
-    if (progress <= 25) {
-      setColor("#158463");
-    } else if (progress <= 50) {
-      setColor("#158463")
-    } else if (progress <= 75) {
-      setColor("#FD9345")
-    } else if (progress <= 100) {
-      setColor("#FD9345")
-    }else {
-      return setColor("#CF5C5C")
-    }
-  },[progress, color])
-  // console.log(progress)
+  if (progress <= 25) {
+    color = ("#158463");
+  } else if (progress <= 50) {
+    color = ("#158463")
+  } else if (progress <= 75) {
+    color = ("#FD9345")
+  } else if (progress <= 100) {
+    color = ("#FD9345")
+  }
+
+  // useEffect(() => {
+
+    
+
+
+  // },[progress, color])
+  // // console.log(progress)
 
 
   const progressStyles = {
