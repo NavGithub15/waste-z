@@ -16,7 +16,6 @@
         max-width: 120rem;
         margin: 0 auto;
     } 
-
     &__container{
         padding: 1rem;
 
@@ -175,6 +174,9 @@
     }
     }
 
-// input[type="file"] {
-//     display: none;
-// }
+    .storage__error{
+
+        @include tablet{
+            margin-left: 2rem;
+        }
+    }

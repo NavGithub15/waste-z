@@ -2,7 +2,8 @@ import "./RecipeCards.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
- const API_KEY = process.env.REACT_APP_API_KEY;
+//  const API_KEY = process.env.REACT_APP_API_KEY;
+const API_KEY = "cfd419724177439aab4f03297d2389f3";
 
 export default function RecipeCards({ recipe }) {
     const [details, setDetails] = useState({})
@@ -20,19 +21,14 @@ export default function RecipeCards({ recipe }) {
             });
     }, [details.id]);
 
-    const handleClick = () => {
-        window.location.assign(details.sourceUrl)
-    }
-    console.log(handleClick())
-
-    if (recipe.length === 0) {
+    if (details.length === 0) {
         return <h2>loading.....</h2>;
       }
     
 
     return (
         <>
-            <div className="results" onClick={handleClick}>
+            <div className="results">
                 <div className="results__container">
                     <h3 className="results__title">{details.title}</h3>
                 </div>
@@ -43,7 +39,7 @@ export default function RecipeCards({ recipe }) {
                     <p className="results__info" dangerouslySetInnerHTML={{ __html: details.instructions }}></p>
                 </div>
                 <div className="results__link-wrapper">
-                    <a className="results__link" href={details.sourceUrl} target="_blank" rel="noreferrer noopener">Learn More</a>
+                    <a className="results__link" href={details.spoonacularSourceUrl} target="_blank" rel="noreferrer noopener">Learn More</a>
                 </div>
             </div>
         </>

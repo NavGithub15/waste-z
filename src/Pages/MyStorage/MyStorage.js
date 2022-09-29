@@ -117,6 +117,8 @@ export default function MyStorage() {
 
   }, []);
 
+  const sortedStorageNewOnTop = (storageData.map((item) => item).sort((a, b) => (b.expiryDate < a.expiryDate)? 1 : -1))
+
   // function to increase and decrease the quantity
   const increment = () => {
     setQuantity(function (prevCount) {
@@ -138,7 +140,7 @@ export default function MyStorage() {
     <section className="storage">
       <div className="storage__container">
         <h2 className="storage__title">Add new item</h2>
-        {errorMessage && <p>Please fill out all the fields!!</p>}
+        {errorMessage && <p className="storage__error">Please fill out all the fields!!</p>}
         <form className="storage__form" onSubmit={handleAddSubmit}>
           <div className="storage__icon-wrapper">
             <label htmlFor="file-input" className="storage__input-label">
@@ -203,7 +205,7 @@ export default function MyStorage() {
             <h4 className="storage__date-label">Storage Date</h4>
             <input className="storage__date" type="date"
               defaultValue={storageDate}
-              min={initializeDate()}
+              // min={initializeDate()}
               onChange={(e) => setStorageDate(e.target.value)}
             />
           </div>
@@ -211,6 +213,7 @@ export default function MyStorage() {
             <h4 className="storage__date-label">Expiration Date</h4>
             <input className="storage__date" type="date"
               min={initializeDate()}
+              defaultValue={expiryDate}
               onChange={(e) => setExpiryDate(e.target.value)}
             />
           </div>
@@ -222,7 +225,7 @@ export default function MyStorage() {
       </div>
       <div className="storage__aside-component">
         <h2 className="storage__aside-heading">Storage Items</h2>
-        {storageData.map((item) => {
+        {sortedStorageNewOnTop.map((item) => {
           return <MyStorageDetails key={item.id} item={item} />
         })}
       </div>

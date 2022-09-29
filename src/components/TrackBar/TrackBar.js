@@ -55,7 +55,7 @@ if (!progress){
   return (
     <>
       <div className="trackBar">
-        <div className="trackBar__inner" style={progressStyles} progress={progress}></div>
+        <div className="trackBar__inner" style={progressStyles}></div>
       </div>
     </>
   )
