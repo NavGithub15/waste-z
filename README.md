@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+Waste Z
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is designed to help users to track their inventory in the kitchen in a smarter ways to reduce food waste. 
 
-## Available Scripts
+![Screen Shot 2022-09-28 at 08 37 58](https://user-images.githubusercontent.com/103960076/192780513-d885f764-263b-4109-9713-ba414ad98e1b.png)
 
-In the project directory, you can run:
+![Screen Shot 2022-09-28 at 08 38 36](https://user-images.githubusercontent.com/103960076/192780581-5bed890b-b5ba-478f-b36f-3956e20c7cca.png)
 
-### `npm start`
+Features:
+- Food item storage list with active trackbar
+- Notification upon expiration of the food item.
+- Search recipes that let users browse through and find the right one that suits their needs.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Future Updates:
+- Active statistics chart to track the amount of food consumed vs food waste.
+- Filter and Sort functionality
+- Smart storage list
+- Edit Storage list functionality
+- Donation page with geolocation to search nearby food shelter
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+Tech Stack:
+- React, SASS, Flexbox, Firebase, Git & Github
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Setup:
+- Clone this repository. git@github.com:NavGithub15/waste-z.git
 
-### `npm run build`
+- Run npm install from inside the client directory.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+$ cd waste-z
+$ npm install
+$ npm start to run the application in your browser
