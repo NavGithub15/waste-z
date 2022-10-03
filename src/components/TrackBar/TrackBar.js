@@ -1,9 +1,6 @@
 import "./TrackBar.scss"
-// import { useState useEffect } from "react";
 
 export default function TrackBar({ storageDate, expiryDate }) {
-  // const [progress, setProgress] = useState(0);
-  // const [color, setColor] = useState("")
 
   // function to convert timestamp to epoch
   function epoch(date) {
@@ -19,10 +16,11 @@ export default function TrackBar({ storageDate, expiryDate }) {
   const dateToday = new Date()
   const todayTimestamp = epoch(dateToday)
 
-  const startDate = todayTimestamp - storageTimestamp;
-  const endDate = expiryTimestamp - storageTimestamp;
+  // const startDate = todayTimestamp - storageTimestamp;
+  // const endDate = expiryTimestamp - storageTimestamp;
 
-  const progress = (Math.floor((startDate / endDate) * 100))
+  const progress = Math.floor((todayTimestamp - storageTimestamp)/(expiryTimestamp - storageTimestamp)* 100)
+  console.log(progress)
 
   let color = ("#CF5C5C");
 
@@ -33,17 +31,10 @@ export default function TrackBar({ storageDate, expiryDate }) {
   } else if (progress <= 75) {
     color = ("#FD9345")
   } else if (progress <= 100) {
-    color = ("#FD9345")
-  }
-
-  // useEffect(() => {
-
-    
-
-
-  // },[progress, color])
-  // // console.log(progress)
-
+    color = ("#CF5C5C")
+  } else if (progress > 100){
+    <h1> Product is Expired</h1>
+  } 
 
   const progressStyles = {
     width: `${progress}%`,
@@ -52,7 +43,7 @@ export default function TrackBar({ storageDate, expiryDate }) {
   
 if (!progress){
   return (
-  <h1>Loading......</h1>
+  <h1>Tracking not available at this moment</h1>
   )
 }
 

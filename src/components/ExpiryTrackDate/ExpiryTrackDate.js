@@ -1,9 +1,6 @@
-import { useState, useEffect } from "react"
+// import { useState, useEffect } from "react"
 
 export default function ExpiryTrackDate({ storageDate, expiryDate }) {
-     const [progress, setProgress] = useState(0);
-    const [color, setColor] = useState("")
-    const [dateText,setDateText] = useState("")
   
     // function to convert timestamp to epoch
     function epoch(date) {
@@ -11,7 +8,7 @@ export default function ExpiryTrackDate({ storageDate, expiryDate }) {
     }
     // storage timestamp into epoch
     
-    useEffect(() => {
+
         const storageTimestamp = epoch(storageDate)
   
         // expiry timestamp into epoch
@@ -24,34 +21,37 @@ export default function ExpiryTrackDate({ storageDate, expiryDate }) {
         const startDate = todayTimestamp - storageTimestamp;
         const endDate = expiryTimestamp - storageTimestamp;
     
-        const progressToSet = Math.floor((startDate/endDate)*100)
+        const progress = Math.floor((startDate/endDate)*100)
       
-      setProgress(progressToSet)
+        let dateText = ("Expired");
+        let color = ("#CF5C5C");
 
-      if (progress < 25) {
-        setDateText("Expiration Date")
-      } else if (progress < 50) {
-        setDateText("Expiring on")
-      } else if (progress < 75) {
-        setDateText("Expiring on")
-      } else if (progress === 100) {
-        setDateText("Expired")
-      } else{
-        setDateText("Expired")
-        return setColor("#CF5C5C")
+      if (progress <= 25) {
+        dateText = ("Expiration Date")
+        color = ("#158463")
+      } else if (progress <= 50) {
+        dateText = ("Expiration Date")
+        color = ("#158463")
+      } else if (progress <= 75) {
+        dateText = ("Expiring on")
+        color = ("#FD9345")
+      } else if (progress <= 100) {
+        dateText = ("Expired")
+        color = ("#CF5C5C");
+      } else if (progress > 100) {
+        dateText = ("Expired on")
+        color = ("#CF5C5C");
       }
-    }, [progress, color]);
-  
-console.log(progress)
+
     const progressStyles = {
         color: `${color}`,
       };
   
     return (
         <>
-            <div className="expiry-wrapper" style={progressStyles}>
+            <div className="expiry-wrapper">
                 <h4 className="expiry__content-heading" style={progressStyles}>{dateText}</h4>
-                <span className="expiry__content-text" style={progressStyles}>{expiryDate}</span>
+                <span className="expiry__content-text">{expiryDate}</span>
             </div>
         </>
     )
