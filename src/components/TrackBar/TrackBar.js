@@ -8,7 +8,7 @@ export default function TrackBar({ progress }) {
     color = ("#158463");
   } else if (progress <= 50) {
     color = ("#158463")
-  } else if (progress <= 75) {
+  } else if (progress <= 75 || progress <= 99) {
     color = ("#FD9345")
   } else if (progress <= 100) {
     color = ("#CF5C5C")
@@ -21,6 +21,7 @@ export default function TrackBar({ progress }) {
     backgroundColor: `${color}`,
   }
 
+  console.log(progress)
   if (!progress) {
     return (
       <h1>Tracking not available at this moment</h1>

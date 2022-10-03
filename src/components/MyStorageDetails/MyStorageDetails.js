@@ -5,6 +5,8 @@ import { db } from "../../firebase.config";
 import deleteIcon from "../../styles/assets/icons/delete_outline-24px.svg";
 import TrackBar from "../TrackBar/TrackBar";
 import Collapsible from "react-collapsible";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function MyStorageDetails({ item }) {
   const [storageDelete, setStorageDelete] = useState(item);
@@ -19,13 +21,15 @@ export default function MyStorageDetails({ item }) {
     }
   };
 
+  const notifyWarn = () => toast.warn(`Your ${item.name} in ${item.category} is set to expire soon`);
+  const notifyExpire = () => toast.error(`Your ${item.name} in ${item.category} is expired `);
+
   // function to convert timestamp to epoch
   function epoch(date) {
     return Date.parse(date)
   }
+  
   // storage timestamp into epoch
-
-
   const storageTimestamp = epoch(item.storageDate)
 
   // expiry timestamp into epoch
@@ -49,13 +53,15 @@ export default function MyStorageDetails({ item }) {
   } else if (progress <= 50) {
     dateText = ("Expiration Date")
     color = ("#158463")
-  } else if (progress <= 75) {
+  } else if (progress <= 75 || progress <= 99) {
+    setTimeout(() => {notifyWarn()},6000)
     dateText = ("Expiring on")
     color = ("#FD9345")
   } else if (progress <= 100) {
     dateText = ("Expired")
     color = ("#CF5C5C");
   } else if (progress > 100) {
+    setTimeout(() => {notifyExpire()},2000)
     dateText = ("Expired on")
     color = ("#CF5C5C");
   }
@@ -77,6 +83,7 @@ export default function MyStorageDetails({ item }) {
   return (
     <>
       <div className="details">
+      <ToastContainer/>
         <div className="details__container">
           <div className="details__title-wrapper">
             <h3 className="details__food-title">{item.name}</h3>
