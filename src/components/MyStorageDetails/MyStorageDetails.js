@@ -4,7 +4,6 @@ import { deleteDoc, doc, } from "firebase/firestore";
 import { db } from "../../firebase.config";
 import deleteIcon from "../../styles/assets/icons/delete_outline-24px.svg";
 import TrackBar from "../TrackBar/TrackBar";
-import ExpiryTrackDate from "../ExpiryTrackDate/ExpiryTrackDate";
 import Collapsible from "react-collapsible";
 
 export default function MyStorageDetails({ item }) {
@@ -18,6 +17,51 @@ export default function MyStorageDetails({ item }) {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  // function to convert timestamp to epoch
+  function epoch(date) {
+    return Date.parse(date)
+  }
+  // storage timestamp into epoch
+
+
+  const storageTimestamp = epoch(item.storageDate)
+
+  // expiry timestamp into epoch
+  const expiryTimestamp = epoch(item.expiryDate)
+
+  // current timestamp into epoch
+  const dateToday = new Date()
+  const todayTimestamp = epoch(dateToday)
+
+  const startDate = todayTimestamp - storageTimestamp;
+  const endDate = expiryTimestamp - storageTimestamp;
+
+  const progress = Math.floor((startDate / endDate) * 100)
+
+  let dateText = ("Expired");
+  let color = ("#CF5C5C");
+
+  if (progress <= 25) {
+    dateText = ("Expiration Date")
+    color = ("#158463")
+  } else if (progress <= 50) {
+    dateText = ("Expiration Date")
+    color = ("#158463")
+  } else if (progress <= 75) {
+    dateText = ("Expiring on")
+    color = ("#FD9345")
+  } else if (progress <= 100) {
+    dateText = ("Expired")
+    color = ("#CF5C5C");
+  } else if (progress > 100) {
+    dateText = ("Expired on")
+    color = ("#CF5C5C");
+  }
+
+  const progressStyles = {
+    color: `${color}`,
   };
 
   if (!item) {
@@ -45,12 +89,15 @@ export default function MyStorageDetails({ item }) {
                 alt="food item" />
             </div>
             <div className="details__content-wrapper food">
-              <TrackBar storageDate={item.storageDate} expiryDate={item.expiryDate} />
+              <TrackBar progress={progress}/>
               <div className="food__qty-wrapper">
                 <h4 className="food__content-heading">QTY</h4>
                 <span className="food__content-text">{item.quantity}</span>
               </div>
-              <ExpiryTrackDate className="food__content-text" storageDate={item.storageDate} expiryDate={item.expiryDate} />
+              <div className="food-wrapper">
+                <h4 className="food__content-heading" style={progressStyles}>{dateText}</h4>
+                <span className="food__content-text">{item.expiryDate}</span>
+              </div>
               <div className="food__icon-wrapper">
                 <img
                   className="food__icon"
@@ -61,26 +108,26 @@ export default function MyStorageDetails({ item }) {
             </div>
           </div>
           <Collapsible className="food__accordion" trigger=".">
-          <div className="food__accordion-wrapper">
-            <div className="food__accordion-content-wrapper">
-              <div className="food__category-wrapper">
-                <h4 className="food__content-heading">Storage</h4>
-                <span className="food__content-text">{item.category}</span>
-              </div>
-              <div className="food__type-wrapper">
-                <h4 className="food__content-heading">Category</h4>
-                <span className="food__content-text">
-                  {item.subCategory}
-                </span>
-              </div>
-              <div className="food__timestamp-wrapper">
-                <h4 className="food__content-heading">Storage Date</h4>
-                <span className="food__content-text">
-                  {item.storageDate}
-                </span>
+            <div className="food__accordion-wrapper">
+              <div className="food__accordion-content-wrapper">
+                <div className="food__category-wrapper">
+                  <h4 className="food__content-heading">Storage</h4>
+                  <span className="food__content-text">{item.category}</span>
+                </div>
+                <div className="food__type-wrapper">
+                  <h4 className="food__content-heading">Category</h4>
+                  <span className="food__content-text">
+                    {item.subCategory}
+                  </span>
+                </div>
+                <div className="food__timestamp-wrapper">
+                  <h4 className="food__content-heading">Storage Date</h4>
+                  <span className="food__content-text">
+                    {item.storageDate}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
           </Collapsible>
         </div>
       </div>
