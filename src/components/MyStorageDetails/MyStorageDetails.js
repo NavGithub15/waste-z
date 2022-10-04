@@ -1,5 +1,5 @@
 import "./MyStorageDetails.scss";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { deleteDoc, doc, } from "firebase/firestore";
 import { db } from "../../firebase.config";
 import deleteIcon from "../../styles/assets/icons/delete_outline-24px.svg";
@@ -21,7 +21,6 @@ export default function MyStorageDetails({ item }) {
     }
   };
 
-  const notifyWarn = () => toast.warn(`Your ${item.name} in ${item.category} is set to expire soon`);
   const notifyExpire = () => toast.error(`Your ${item.name} in ${item.category} is expired `);
 
   // function to convert timestamp to epoch
@@ -54,7 +53,6 @@ export default function MyStorageDetails({ item }) {
     dateText = ("Expiration Date")
     color = ("#158463")
   } else if (progress <= 75 || progress <= 99) {
-    setTimeout(() => {notifyWarn()},6000)
     dateText = ("Expiring on")
     color = ("#FD9345")
   } else if (progress <= 100) {
@@ -83,7 +81,7 @@ export default function MyStorageDetails({ item }) {
   return (
     <>
       <div className="details">
-      <ToastContainer/>
+      <ToastContainer limit={2}/>
         <div className="details__container">
           <div className="details__title-wrapper">
             <h3 className="details__food-title">{item.name}</h3>
