@@ -1,0 +1,12 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+
+
+.donate{
+    display: flex;
+    padding: 3rem;
+    margin-top: 15rem;
+    justify-content: center;
+    align-items: center;
+}

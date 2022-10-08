@@ -136,6 +136,10 @@
 
     &__results-heading{
         margin-left: .5rem;
+
+        @include desktop{
+            margin-left: 6rem;
+        }
         
     }
 }

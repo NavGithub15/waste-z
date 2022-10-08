@@ -30,7 +30,6 @@ export default function App() {
               <Route path="/browseRecipe" element={<BrowseRecipe />} />
               <Route path="/donate" element={<Donate />} />
           </Routes >
-          
     </AuthProvider>
   </>
   )

@@ -17,7 +17,7 @@ export default function HamburgerMenu({ styles }) {
       {!currentUser ? (<NavLink className="menu__link" to="/signUp">Get Started</NavLink>) :
         (<NavLink to="/browseRecipe" className="menu__link">Recipes</NavLink>
         )}
-      <NavLink className="menu__link" to="/storage">Storage</NavLink>
+      {/* <NavLink className="menu__link" to="/storage">Storage</NavLink> */}
       <NavLink className="menu__link" to="/donate">Donate</NavLink>
     </Menu>
   );

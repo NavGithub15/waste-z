@@ -205,7 +205,7 @@ export default function MyStorage() {
             <h4 className="storage__date-label">Storage Date</h4>
             <input className="storage__date" type="date"
               defaultValue={storageDate}
-              // min={initializeDate()}
+              min={initializeDate()}
               onChange={(e) => setStorageDate(e.target.value)}
             />
           </div>

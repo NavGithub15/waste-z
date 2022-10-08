@@ -3,8 +3,7 @@ import { useState } from "react";
 import RecipeCards from "../../components/RecipeCards/RecipeCards";
 import axios from "axios";
 
-// const API_KEY = process.env.REACT_APP_API_KEY;
-const API_KEY = "cfd419724177439aab4f03297d2389f3";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 export default function BrowseRecipe() {
   const [recipeValue, setRecipeValue] = useState([]);

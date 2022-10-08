@@ -1,56 +1,32 @@
 import "./TrackBar.scss"
-import { useState, useEffect } from "react";
 
-export default function TrackBar({ storageDate, expiryDate }) {
-  const [progress, setProgress] = useState(0);
-  const [color, setColor] = useState("")
+export default function TrackBar({ progress }) {
 
-  // function to convert timestamp to epoch
-  function epoch(date) {
-    return Date.parse(date)
+  let color = ("#CF5C5C");
+
+  if (progress <= 25) {
+    color = ("#158463");
+  } else if (progress <= 50) {
+    color = ("#158463")
+  } else if (progress <= 75 || progress <= 99) {
+    color = ("#FD9345")
+  } else if (progress <= 100) {
+    color = ("#CF5C5C")
+  } else if (progress > 100) {
+
   }
-      // storage timestamp into epoch
-  const storageTimestamp = epoch(storageDate)
-
-  // expiry timestamp into epoch
-  const expiryTimestamp = epoch(expiryDate)
-
-  // current timestamp into epoch
-  const dateToday = new Date()
-  const todayTimestamp = epoch(dateToday)
-
-  const startDate = todayTimestamp - storageTimestamp;
-  const endDate = expiryTimestamp - storageTimestamp;
-
-  useEffect(() => {
-
-    setProgress(Math.floor((startDate / endDate) * 100))
-
-    if (progress <= 25) {
-      setColor("#158463");
-    } else if (progress <= 50) {
-      setColor("#158463")
-    } else if (progress <= 75) {
-      setColor("#FD9345")
-    } else if (progress <= 100) {
-      setColor("#FD9345")
-    }else {
-      return setColor("#CF5C5C")
-    }
-  },[progress, color])
-  // console.log(progress)
-
 
   const progressStyles = {
     width: `${progress}%`,
     backgroundColor: `${color}`,
-  };
-  
-if (!progress){
-  return (
-  <h1>Loading......</h1>
-  )
-}
+  }
+
+  console.log(progress)
+  if (!progress) {
+    return (
+      <h1>Tracking not available at this moment</h1>
+    )
+  }
 
   return (
     <>

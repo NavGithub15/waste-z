@@ -17,7 +17,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="footer__copyright">
-                <p>Copyright: <span>{new Date().getFullYear()}</span> ⓒ</p>
+                <p>Copyright WASTE <strong>Z</strong><span> {new Date().getFullYear()}</span> ⓒ</p>
             </div>
         </footer>
     )

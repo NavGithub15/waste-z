@@ -22,14 +22,14 @@ export default function Cards() {
                 <div className="article__overlay"></div>
                     <img className="article__card-image" src={dishImage} alt="dish prep" loading="lazy" />
                     <div className="article__text-wrapper">
-                        <Link to="/recipe" className="article__text">Browse Recipes</Link>
+                        <Link to="/browseRecipe" className="article__text">Browse Recipes</Link>
                     </div>
                 </div>
                 <div className="article__card">
                 <div className="article__overlay"></div>
                     <img className="article__card-image" src={blueberry} alt="spoiled apple" loading="lazy" />
                     <div className="article__text-wrapper">
-                        <Link to="/storage" className="article__text">Storage</Link>
+                        <Link to="/myStorage" className="article__text">Storage</Link>
                     </div>
                 </div>
                 <div className="article__card">
