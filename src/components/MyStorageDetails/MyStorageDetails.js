@@ -1,5 +1,5 @@
 import "./MyStorageDetails.scss";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { deleteDoc, doc, } from "firebase/firestore";
 import { db } from "../../firebase.config";
 import deleteIcon from "../../styles/assets/icons/delete_outline-24px.svg";
@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function MyStorageDetails({ item }) {
   const [storageDelete, setStorageDelete] = useState(item);
+  const customId = "custom-id-yes";
 
   // handle delete function to delete item
   const handleDelete = async (id) => {
@@ -21,13 +22,26 @@ export default function MyStorageDetails({ item }) {
     }
   };
 
-  const notifyExpire = () => toast.error(`Your ${item.name} in ${item.category} is expired `);
+  const notifyExpire = () => {
+    toast.error(`Your ${item.name} in ${item.category} is expired`, {
+      toastId: customId,
+      autoClose: 5000,
+      hideProgressBar: true,
+    })
+  };
+  const notifyWarn = () => {
+    toast.warn(`Your ${item.name} in ${item.category} is expiring soon`, {
+      toastId: customId,
+      autoClose: 5000,
+      hideProgressBar: true,
+    })
+  };
 
   // function to convert timestamp to epoch
   function epoch(date) {
     return Date.parse(date)
   }
-  
+
   // storage timestamp into epoch
   const storageTimestamp = epoch(item.storageDate)
 
@@ -53,13 +67,14 @@ export default function MyStorageDetails({ item }) {
     dateText = ("Expiration Date")
     color = ("#158463")
   } else if (progress <= 75 || progress <= 99) {
+    setTimeout(() => { notifyWarn() }, 1000)
     dateText = ("Expiring on")
     color = ("#FD9345")
   } else if (progress <= 100) {
     dateText = ("Expired")
     color = ("#CF5C5C");
   } else if (progress > 100) {
-    setTimeout(() => {notifyExpire()},2000)
+    setTimeout(() => { notifyExpire() }, 1000)
     dateText = ("Expired on")
     color = ("#CF5C5C");
   }
@@ -80,8 +95,9 @@ export default function MyStorageDetails({ item }) {
 
   return (
     <>
+      <ToastContainer
+      newestOnTop={true} />
       <div className="details">
-      <ToastContainer limit={2}/>
         <div className="details__container">
           <div className="details__title-wrapper">
             <h3 className="details__food-title">{item.name}</h3>
@@ -94,7 +110,7 @@ export default function MyStorageDetails({ item }) {
                 alt="food item" />
             </div>
             <div className="details__content-wrapper food">
-              <TrackBar progress={progress}/>
+              <TrackBar progress={progress} />
               <div className="food__qty-wrapper">
                 <h4 className="food__content-heading">QTY</h4>
                 <span className="food__content-text">{item.quantity}</span>
