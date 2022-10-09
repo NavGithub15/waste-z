@@ -21,10 +21,9 @@ export default function TrackBar({ progress }) {
     backgroundColor: `${color}`,
   }
 
-  console.log(progress)
   if (!progress) {
     return (
-      <h1>Tracking not available at this moment</h1>
+      <h1>Track bar failed to load</h1>
     )
   }
 
