@@ -36,7 +36,7 @@ export default function Cards() {
                 <div className="article__overlay"></div>
                     <img className="article__card-image" src={broccoli} alt="broccoli" loading="lazy" />
                     <div className="article__text-wrapper">
-                        <h3 className="article__text">Donate</h3>
+                        <Link to="/donate" className="article__text">Donate</Link>
                     </div>
                 </div>
             </div>
