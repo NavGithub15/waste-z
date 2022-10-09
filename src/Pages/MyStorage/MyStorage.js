@@ -213,7 +213,7 @@ export default function MyStorage() {
             <h4 className="storage__date-label">Expiration Date</h4>
             <input className="storage__date" type="date"
               min={initializeDate()}
-              defaultValue={expiryDate}
+              defaultValue={storageDate}
               onChange={(e) => setExpiryDate(e.target.value)}
             />
           </div>

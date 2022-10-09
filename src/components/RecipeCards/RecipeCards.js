@@ -24,7 +24,6 @@ export default function RecipeCards({ recipe }) {
         return <h2>loading.....</h2>;
       }
     
-
     return (
         <>
             <div className="results">
