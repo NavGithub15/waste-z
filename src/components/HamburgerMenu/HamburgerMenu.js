@@ -9,7 +9,7 @@ export default function HamburgerMenu({ styles }) {
   const [currentUser] = useAuthState(auth)
 
   return (
-    <Menu styles={styles}>
+    <Menu right>
       <NavLink to="/" className="menu__link" end>Home</NavLink>
       {!currentUser ? (<NavLink to="/signIn" className="menu__link">My Storage</NavLink>) :
         (<NavLink to="/myStorage" className="menu__link">My Storage</NavLink>
